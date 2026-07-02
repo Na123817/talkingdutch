@@ -5,7 +5,7 @@
 
 <!-- ✦ PRIMARY SEO -->
 <title>Talking Dutch | Learn Dutch Online with a Native Tutor — Jonathan van Hassel</title>
-<meta name="description" content="Learn Dutch online with Jonathan van Hassel, a native Dutch tutor. 1-on-1 lessons for all levels A1–C1, NT2 exam prep &amp; inburgering. Free intro lesson available.">
+<meta name="description" content="Learn Dutch online with Jonathan van Hassel, a native Dutch tutor. 1-on-1 lessons for all levels A1–C1, NT2 exam prep &amp; inburgering. 30-minute trial lesson for $12.">
 <meta name="keywords" content="learn Dutch online, Dutch tutor, online Dutch lessons, Dutch language lessons, NT2 exam, inburgering, Dutch teacher, Dutch course online, speak Dutch">
 <meta name="author" content="Jonathan van Hassel">
 <meta name="robots" content="index, follow">
@@ -17,7 +17,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.talkingdutch.com/">
 <meta property="og:title" content="Talking Dutch | Learn Dutch Online with a Native Tutor">
-<meta property="og:description" content="Personal 1-on-1 Dutch lessons online with Jonathan van Hassel — native speaker, all levels A1–C1, NT2 prep. Free intro lesson available.">
+<meta property="og:description" content="Personal 1-on-1 Dutch lessons online with Jonathan van Hassel — native speaker, all levels A1–C1, NT2 prep. 30-minute trial lesson for $12.">
 <meta property="og:image" content="https://www.talkingdutch.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -28,7 +28,7 @@
 <!-- ✦ TWITTER / X CARD -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Talking Dutch | Learn Dutch Online with a Native Tutor">
-<meta name="twitter:description" content="1-on-1 Dutch lessons with a native speaker. All levels, flexible schedule, free intro lesson.">
+<meta name="twitter:description" content="1-on-1 Dutch lessons with a native speaker. All levels, flexible schedule, $12 trial lesson.">
 <meta name="twitter:image" content="https://www.talkingdutch.com/og-image.jpg">
 
 <!-- ✦ SCHEMA MARKUP: Professional Service (JSON-LD) -->
@@ -62,11 +62,41 @@
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Introduction Dutch Lesson",
-          "description": "Free 20-minute trial followed by a 1-hour online Dutch lesson on Google Meet."
+          "name": "30-Minute Trial Lesson",
+          "description": "A 30-minute trial lesson to give you insight into the course before booking a package."
         },
-        "price": "25",
+        "price": "12",
         "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "3-Hour Dutch Lesson Package",
+          "description": "3 hours of online Dutch lessons on Google Meet."
+        },
+        "price": "66",
+        "priceCurrency": "EUR"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "5-Hour Dutch Lesson Package",
+          "description": "5 hours of online Dutch lessons on Google Meet."
+        },
+        "price": "110",
+        "priceCurrency": "EUR"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "10-Hour Dutch Lesson Package",
+          "description": "10 hours of online Dutch lessons on Google Meet."
+        },
+        "price": "200",
+        "priceCurrency": "EUR"
       },
       {
         "@type": "Offer",
@@ -562,11 +592,12 @@
 
   /* ── PRICING ── */
   .pricing-wrap { max-width: 1000px; margin: 0 auto; padding: 5rem 2rem 6rem; }
-  .pricing-grid { display: grid; grid-template-columns: 1fr 1.08fr 1fr; gap: 1.2rem; margin-top: 2.5rem; }
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.2rem; margin-top: 2.5rem; }
   /* ── GENERIC 3D FLIP SYSTEM (reused across card types) ── */
   .gflip-inner {
     position: relative;
     width: 100%;
+    height: 100%;
     transform-style: preserve-3d;
     transition: transform 0.6s cubic-bezier(.4,0,.2,1);
   }
@@ -574,6 +605,12 @@
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     border-radius: inherit;
+    height: 100%;
+    box-sizing: border-box;
+  }
+  .gflip-front {
+    display: flex;
+    flex-direction: column;
   }
   .gflip-back {
     position: absolute;
@@ -582,14 +619,40 @@
     background: #0a0a0a;
     border: 1px solid var(--accent);
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
   }
-  .gflip-back .btn-purchase { background: var(--accent); color: #1a1a1a; border-color: var(--accent); }
+  .gflip-back .btn-purchase { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  .btn-ghost-accent {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    box-shadow: inset 0 0 0 1px rgba(232,119,34,0.15), 0 0 16px rgba(232,119,34,0.12);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background .2s, color .2s, box-shadow .2s, transform .15s;
+  }
+  .btn-ghost-accent:hover {
+    color: #ffb877;
+    background: rgba(232,119,34,0.16);
+    box-shadow: inset 0 0 0 1px rgba(232,119,34,0.35), 0 0 22px rgba(232,119,34,0.22);
+    transform: translateY(-1px);
+  }
 
   .price-card {
     border-radius: 16px;
     text-align: center;
     position: relative;
     perspective: 1400px;
+    height: 100%;
+  }
+  .price-card::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    background: #0a0a0a;
+    border-radius: 20px;
+    z-index: -1;
   }
   .price-card:hover .gflip-inner,
   .price-card:focus-within .gflip-inner { transform: rotateY(180deg); }
@@ -601,10 +664,7 @@
   }
   .price-card .gflip-back { border-radius: 16px; padding: 2.4rem 1.8rem; }
   .price-card.featured {
-    border-color: rgba(255,255,255,0.3);
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.2), 0 8px 40px rgba(196,98,26,0.4);
-    transform: scale(1.03);
-    z-index: 1;
+    border-color: rgba(255,255,255,0.15);
   }
   .price-days {
     font-family: 'Orbitron', sans-serif;
@@ -701,6 +761,7 @@
     border-radius: 12px;
     position: relative;
     perspective: 1400px;
+    height: 100%;
     transition: transform .2s, box-shadow .2s;
   }
   .cw-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(196,98,26,0.3); }
@@ -916,19 +977,25 @@
   .qbf-submit {
     display: inline-block;
     padding: 0.8rem 2rem;
-    background: var(--accent);
-    color: #1a1a1a;
-    border: none;
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
     border-radius: 50px;
+    box-shadow: inset 0 0 0 1px rgba(232,119,34,0.15), 0 0 16px rgba(232,119,34,0.12);
     font-family: 'Orbitron', sans-serif;
     font-size: 0.7rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     font-weight: 700;
     cursor: pointer;
-    transition: background .2s, transform .15s;
+    transition: background .2s, color .2s, box-shadow .2s, transform .15s;
   }
-  .qbf-submit:hover { background: #fff; transform: translateY(-1px); }
+  .qbf-submit:hover {
+    color: #ffb877;
+    background: rgba(232,119,34,0.16);
+    box-shadow: inset 0 0 0 1px rgba(232,119,34,0.35), 0 0 22px rgba(232,119,34,0.22);
+    transform: translateY(-1px);
+  }
   .qbf-note {
     margin-top: 0.9rem;
     color: rgba(255,255,255,0.5);
@@ -955,6 +1022,41 @@
     color: #ffd9b8;
     background: rgba(18, 14, 11, 0.52);
   }
+  .payment-methods { margin-top: 2.5rem; }
+  .payment-methods-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .payment-methods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .payment-method-card {
+    border: 1px solid rgba(232,119,34,0.2);
+    border-radius: 12px;
+    padding: 1.2rem;
+    background: rgba(10,8,7,0.5);
+  }
+  .payment-method-icon { color: var(--accent); margin-bottom: 0.7rem; }
+  .payment-method-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  .payment-method-detail {
+    font-size: 0.83rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+  }
+  .payment-method-detail a { color: var(--accent); word-break: break-all; }
+  .payment-method-detail a:hover { text-decoration: underline; }
 
   @media(max-width:980px) {
     nav a {
@@ -1083,16 +1185,27 @@
     font-family: 'Orbitron', sans-serif; font-size: 0.65rem;
     letter-spacing: 0.15em; text-transform: uppercase;
     padding: 0.9rem 2rem; border-radius: 50px;
-    transition: color .2s, background .2s, transform .15s;
+    box-shadow: inset 0 0 0 1px rgba(232,119,34,0.15), 0 0 16px rgba(232,119,34,0.12);
+    transition: color .2s, background .2s, border-color .2s, box-shadow .2s, transform .15s;
   }
-  .cta-primary:hover { color: #fff; background: var(--accent); transform: translateY(-1px); }
+  .cta-primary:hover {
+    color: #ffb877;
+    background: rgba(232,119,34,0.16);
+    box-shadow: inset 0 0 0 1px rgba(232,119,34,0.35), 0 0 22px rgba(232,119,34,0.22);
+    transform: translateY(-1px);
+  }
   .cta-secondary {
     background: transparent; color: var(--accent); border: 1px solid var(--accent);
     cursor: pointer; font-family: 'Barlow', sans-serif; font-size: 0.9rem;
     padding: 0.9rem 1.6rem; border-radius: 50px;
-    transition: color .2s, border-color .2s, background .2s;
+    box-shadow: inset 0 0 0 1px rgba(232,119,34,0.15), 0 0 16px rgba(232,119,34,0.12);
+    transition: color .2s, border-color .2s, background .2s, box-shadow .2s;
   }
-  .cta-secondary:hover { color: #fff; background: var(--accent); border-color: var(--accent); }
+  .cta-secondary:hover {
+    color: #ffb877;
+    background: rgba(232,119,34,0.16);
+    box-shadow: inset 0 0 0 1px rgba(232,119,34,0.35), 0 0 22px rgba(232,119,34,0.22);
+  }
 
   /* ── HOME SECTIONS ── */
   .home-section {
@@ -1134,6 +1247,7 @@
     border-radius: 14px;
     position: relative;
     perspective: 1400px;
+    height: 100%;
   }
   .hs-card:hover .gflip-inner,
   .hs-card:focus-within .gflip-inner { transform: rotateY(180deg); }
@@ -1183,6 +1297,7 @@
     border-radius: 14px;
     position: relative;
     perspective: 1400px;
+    height: 100%;
   }
   .about-language-card:hover .gflip-inner,
   .about-language-card:focus-within .gflip-inner { transform: rotateY(180deg); }
@@ -1219,6 +1334,7 @@
     border-radius: 14px;
     position: relative;
     perspective: 1400px;
+    height: 100%;
   }
   .about-approach-card:hover .gflip-inner,
   .about-approach-card:focus-within .gflip-inner { transform: rotateY(180deg); }
@@ -1381,6 +1497,7 @@
     cursor: pointer;
     position: relative;
     perspective: 1400px;
+    height: 100%;
     transition: box-shadow .25s;
   }
   .blog-card:hover { box-shadow: 0 8px 30px rgba(196,98,26,0.3); }
@@ -1471,6 +1588,7 @@
     border-radius: 16px;
     position: relative;
     perspective: 1400px;
+    height: 100%;
   }
   .testimonial-card:hover .gflip-inner,
   .testimonial-card:focus-within .gflip-inner { transform: rotateY(180deg); }
@@ -1545,10 +1663,16 @@
     background: transparent; color: var(--accent); border: 1px solid var(--accent); border-radius: 50px;
     padding: 1rem 2.2rem; font-family: 'Orbitron', sans-serif; font-size: 0.65rem;
     letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer;
-    text-decoration: none; transition: background .2s, color .2s;
+    text-decoration: none;
+    box-shadow: inset 0 0 0 1px rgba(232,119,34,0.15), 0 0 16px rgba(232,119,34,0.12);
+    transition: background .2s, color .2s, box-shadow .2s;
   }
-  .booking-gcal-btn:hover { background: var(--accent); color: #fff; }
-  .booking-gcal-btn:hover svg { fill: #fff; }
+  .booking-gcal-btn:hover {
+    color: #ffb877;
+    background: rgba(232,119,34,0.16);
+    box-shadow: inset 0 0 0 1px rgba(232,119,34,0.35), 0 0 22px rgba(232,119,34,0.22);
+  }
+  .booking-gcal-btn:hover svg { fill: #ffb877; }
   .booking-gcal-btn svg { width: 16px; height: 16px; fill: var(--accent); }
 
   /* ── SYLLABUS TOC ── */
@@ -1561,7 +1685,12 @@
     text-transform: uppercase; cursor: pointer; background: transparent;
     color: var(--muted); transition: all .2s;
   }
-  .toc-tab.active, .toc-tab:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .toc-tab.active, .toc-tab:hover {
+    background: rgba(232,119,34,0.16);
+    color: #ffb877;
+    border-color: var(--accent);
+    box-shadow: inset 0 0 0 1px rgba(232,119,34,0.35), 0 0 22px rgba(232,119,34,0.22);
+  }
   .toc-panel { display: none; }
   .toc-panel.active { display: block; }
   .toc-module {
@@ -1722,7 +1851,7 @@
     filter: blur(0);
   }
   .reveal-scroll.reveal-card {
-    transform: translate3d(var(--reveal-x, 0px), 28px, 0) scale(0.96);
+    transform: none;
     transform-origin: center center;
     filter: none;
   }
@@ -1770,7 +1899,7 @@
           <ul class="hero-features">
             <li>Multilingual teacher</li>
             <li>Individual, duo or small group</li>
-            <li>Free introduction lesson</li>
+            <li>30-minute trial lesson — $12</li>
             <li>Tailor-made online classes</li>
             <li>Exam preparation (NT2 &amp; civic)</li>
           </ul>
@@ -1789,87 +1918,97 @@
   <div class="home-section" style="padding-top:1.5rem;">
     <div class="home-section-label">Pricing</div>
     <h2 class="home-section-title">Dutch Lesson Packages &amp; Pricing</h2>
+
+    <div style="border:1px solid rgba(232,119,34,0.35); border-radius:14px; padding:1.3rem 1.6rem; margin-bottom:2.2rem; background:rgba(232,119,34,0.06); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem;">
+      <div>
+        <div style="font-family:'Orbitron',sans-serif; font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:0.4rem;">Try it first</div>
+        <p style="color:#e8e8e8; font-size:0.95rem; line-height:1.7; margin:0;">A 30-minute trial costs <strong style="color:#fff;">$12</strong> and gives you insight into the course. If you're interested in booking a trial or lessons, choose one of the packages below.</p>
+      </div>
+      <button class="btn-ghost-accent" style="flex-shrink:0; white-space:nowrap; padding:0.9rem 1.8rem; font-family:'Orbitron',sans-serif; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:700;" onclick="openBookingForm('30-Minute Trial - $12')">Book Trial — $12</button>
+    </div>
+
     <div class="pricing-grid home-pricing">
 
-      <!-- 30 days -->
+      <!-- 3 hours -->
       <div class="price-card">
         <div class="gflip-inner">
           <div class="gflip-front">
             <div class="price-days">Within 30 days</div>
-            <div class="price-trial">Free 20-Minute Trial</div>
-            <div class="price-amount"><span class="dollar">$</span><span class="big">25</span></div>
-            <div class="price-per">/1 Hour on Google Meet</div>
-            <div class="price-tier">Introduction</div>
-            <button class="btn-purchase" onclick="openBookingForm('Introduction - $25')">Purchase</button>
-            <p class="price-note">Arrange an appointment within a month after booking.</p>
+            <div class="price-trial">Great for getting started</div>
+            <div class="price-amount"><span class="dollar">€</span><span class="big">66</span></div>
+            <div class="price-per">/3 Hours on Google Meet</div>
+            <div class="price-tier">3-Hour Package</div>
+            <button class="btn-purchase" onclick="openBookingForm('3 Hours - €66')">Purchase</button>
+            <p class="price-note">Book within a month. Complete at your own pace.</p>
             <ul class="price-features">
-              <li>Experience an online lesson</li>
-              <li>Test your level</li>
+              <li>Individual or duo lessons</li>
+              <li>Flexible scheduling</li>
+              <li>Access to course materials</li>
             </ul>
           </div>
           <div class="gflip-back">
             <div class="price-days">Within 30 days</div>
-            <div class="price-trial">Free 20-Minute Trial</div>
-            <div class="price-amount"><span class="dollar">$</span><span class="big">25</span></div>
-            <div class="price-per">/1 Hour on Google Meet</div>
-            <div class="price-tier">Introduction</div>
-            <button class="btn-purchase" onclick="openBookingForm('Introduction - $25')">Purchase</button>
-            <p class="price-note">Arrange an appointment within a month after booking.</p>
+            <div class="price-trial">Great for getting started</div>
+            <div class="price-amount"><span class="dollar">€</span><span class="big">66</span></div>
+            <div class="price-per">/3 Hours on Google Meet</div>
+            <div class="price-tier">3-Hour Package</div>
+            <button class="btn-purchase" onclick="openBookingForm('3 Hours - €66')">Purchase</button>
+            <p class="price-note">Book within a month. Complete at your own pace.</p>
             <ul class="price-features">
-              <li>Experience an online lesson</li>
-              <li>Test your level</li>
+              <li>Individual or duo lessons</li>
+              <li>Flexible scheduling</li>
+              <li>Access to course materials</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- 60 days — featured -->
+      <!-- 5 hours — featured -->
       <div class="price-card featured">
         <div class="gflip-inner">
           <div class="gflip-front">
             <div class="price-days">Within 60 days</div>
-            <div class="price-trial">Free 30 Minutes</div>
-            <div class="price-amount"><span class="dollar">$</span><span class="big">65</span></div>
+            <div class="price-trial">Most popular choice</div>
+            <div class="price-amount"><span class="dollar">€</span><span class="big">110</span></div>
             <div class="price-per">/5 Hours on Google Meet</div>
-            <div class="price-tier">Basic</div>
-            <button class="btn-purchase" onclick="openBookingForm('Basic - $65')">Purchase</button>
+            <div class="price-tier">5-Hour Package</div>
+            <button class="btn-purchase" onclick="openBookingForm('5 Hours - €110')">Purchase</button>
             <p class="price-note">Book within a month. Course duration up to two months.</p>
             <ul class="price-features">
-              <li>13.3% Discount</li>
               <li>Weekly Dutch lessons</li>
               <li>Support via Email</li>
+              <li>Access to course materials</li>
             </ul>
           </div>
           <div class="gflip-back">
             <div class="price-days">Within 60 days</div>
-            <div class="price-trial">Free 30 Minutes</div>
-            <div class="price-amount"><span class="dollar">$</span><span class="big">65</span></div>
+            <div class="price-trial">Most popular choice</div>
+            <div class="price-amount"><span class="dollar">€</span><span class="big">110</span></div>
             <div class="price-per">/5 Hours on Google Meet</div>
-            <div class="price-tier">Basic</div>
-            <button class="btn-purchase" onclick="openBookingForm('Basic - $65')">Purchase</button>
+            <div class="price-tier">5-Hour Package</div>
+            <button class="btn-purchase" onclick="openBookingForm('5 Hours - €110')">Purchase</button>
             <p class="price-note">Book within a month. Course duration up to two months.</p>
             <ul class="price-features">
-              <li>13.3% Discount</li>
               <li>Weekly Dutch lessons</li>
               <li>Support via Email</li>
+              <li>Access to course materials</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- 90 days -->
+      <!-- 10 hours -->
       <div class="price-card">
         <div class="gflip-inner">
           <div class="gflip-front">
             <div class="price-days">Within 90 days</div>
-            <div class="price-trial">Free 1 Hour</div>
-            <div class="price-amount"><span class="dollar">$</span><span class="big">120</span></div>
+            <div class="price-trial">Best value per hour</div>
+            <div class="price-amount"><span class="dollar">€</span><span class="big">200</span></div>
             <div class="price-per">/10 Hours on Google Meet</div>
-            <div class="price-tier">Intermediate</div>
-            <button class="btn-purchase" onclick="openBookingForm('Intermediate - $120')">Purchase</button>
+            <div class="price-tier">10-Hour Package</div>
+            <button class="btn-purchase" onclick="openBookingForm('10 Hours - €200')">Purchase</button>
             <p class="price-note">Book within a month. Course duration up to three months.</p>
             <ul class="price-features">
-              <li>20% Discount</li>
               <li>Syllabus &amp; Resources access</li>
               <li>WhatsApp support</li>
               <li>Free exam at course end</li>
@@ -1877,14 +2016,13 @@
           </div>
           <div class="gflip-back">
             <div class="price-days">Within 90 days</div>
-            <div class="price-trial">Free 1 Hour</div>
-            <div class="price-amount"><span class="dollar">$</span><span class="big">120</span></div>
+            <div class="price-trial">Best value per hour</div>
+            <div class="price-amount"><span class="dollar">€</span><span class="big">200</span></div>
             <div class="price-per">/10 Hours on Google Meet</div>
-            <div class="price-tier">Intermediate</div>
-            <button class="btn-purchase" onclick="openBookingForm('Intermediate - $120')">Purchase</button>
+            <div class="price-tier">10-Hour Package</div>
+            <button class="btn-purchase" onclick="openBookingForm('10 Hours - €200')">Purchase</button>
             <p class="price-note">Book within a month. Course duration up to three months.</p>
             <ul class="price-features">
-              <li>20% Discount</li>
               <li>Syllabus &amp; Resources access</li>
               <li>WhatsApp support</li>
               <li>Free exam at course end</li>
@@ -1953,11 +2091,11 @@
 <div class="gflip-inner">
 <div class="gflip-front">
         <div class="hs-title">Tailor-Made Classes</div>
-        <div class="hs-desc">A free intro shapes your personal learning plan. Goals, pace and materials are all built around you.</div>
+        <div class="hs-desc">A 30-minute trial ($12) shapes your personal learning plan. Goals, pace and materials are all built around you.</div>
       </div>
 <div class="gflip-back">
         <div class="hs-title">Tailor-Made Classes</div>
-        <div class="hs-desc">A free intro shapes your personal learning plan. Goals, pace and materials are all built around you.</div>
+        <div class="hs-desc">A 30-minute trial ($12) shapes your personal learning plan. Goals, pace and materials are all built around you.</div>
       </div>
 </div>
 </div>
@@ -2006,7 +2144,7 @@
           </div>
         </div>
         <div class="booking-cta-row">
-          <button class="booking-gcal-btn" type="button" onclick="openBookingForm('Free Intro')">
+          <button class="booking-gcal-btn" type="button" onclick="openBookingForm('30-Minute Trial - $12')">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5C3.9 4 3 4.9 3 6v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7z"></path></svg>
             Contact →
           </button>
@@ -2132,11 +2270,11 @@
   <!-- ── HOW CLASSES WORK ── -->
   <div class="home-section" style="padding-bottom:5rem;">
     <div class="home-section-label">Getting started</div>
-    <h2 class="home-section-title">Your first lesson is free</h2>
+    <h2 class="home-section-title">Start with a 30-minute trial</h2>
     <div class="home-intro-block">
-      <p>Before your first paid session, we start with a free introduction. Together we outline your goals, your current level and your preferred pace. You'll also see exactly how online lessons work so there are no surprises.</p>
+      <p>Before your first package, we start with a 30-minute trial lesson for $12. Together we outline your goals, your current level and your preferred pace. You'll also see exactly how online lessons work so there are no surprises.</p>
       <p>Based on that conversation, I handpick the right materials and build a personalised plan — so every minute of every lesson moves you forward.</p>
-      <button onclick="openBookingForm('Free Intro')" class="cta-primary" style="margin-top:1.5rem;">Book free intro →</button>
+      <button onclick="openBookingForm('30-Minute Trial - $12')" class="cta-primary" style="margin-top:1.5rem;">Book trial — $12 →</button>
     </div>
   </div>
 
@@ -3234,7 +3372,7 @@
     </div>
 
     <div style="margin-top:2.5rem;">
-      <button onclick="openBookingForm('Free Intro')" class="cta-primary">Book Free Intro →</button>
+      <button onclick="openBookingForm('30-Minute Trial - $12')" class="cta-primary">Book Trial — $12 →</button>
     </div>
 
   </div>
@@ -3481,10 +3619,10 @@
               <div class="qbf-field">
                 <label for="qbfPackage">Package</label>
                 <select id="qbfPackage">
-                  <option value="Free 20-Minute Trial">Free 20-Minute Trial</option>
-                  <option value="Introduction - $25">Introduction — $25</option>
-                  <option value="Basic - $65">Basic — $65</option>
-                  <option value="Intermediate - $120">Intermediate — $120</option>
+                  <option value="30-Minute Trial - $12">30-Minute Trial — $12</option>
+                  <option value="3 Hours - €66">3 Hours — €66</option>
+                  <option value="5 Hours - €110">5 Hours — €110</option>
+                  <option value="10 Hours - €200">10 Hours — €200</option>
                   <option value="Not sure yet">Not sure yet</option>
                 </select>
               </div>
@@ -3508,6 +3646,61 @@
         <span class="contact-chip">Purchases</span>
         <span class="contact-chip">Packages</span>
         <span class="contact-chip">General Contact</span>
+      </div>
+
+      <div class="payment-methods">
+        <div class="payment-methods-label">Accepted Payment Methods</div>
+        <div class="payment-methods-grid">
+
+          <div class="payment-method-card">
+            <div class="payment-method-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 15h6a3.5 3.5 0 0 0 0-7H8.5L7 15z"></path><path d="M9.5 8H15a3.5 3.5 0 0 1 0 7"></path></svg>
+            </div>
+            <div class="payment-method-name">PayPal</div>
+            <div class="payment-method-detail"><a href="https://paypal.me/jonathanvanhassel34" target="_blank" rel="noopener">paypal.me/jonathanvanhassel34</a></div>
+          </div>
+
+          <div class="payment-method-card">
+            <div class="payment-method-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="5" width="20" height="14" rx="2"></rect><path d="M2 10h20"></path></svg>
+            </div>
+            <div class="payment-method-name">Credit / Debit Card</div>
+            <div class="payment-method-detail">Pay by card via the PayPal link above — no PayPal account needed.</div>
+          </div>
+
+          <div class="payment-method-card">
+            <div class="payment-method-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 21V9"></path></svg>
+            </div>
+            <div class="payment-method-name">Bank Transfer (Revolut link)</div>
+            <div class="payment-method-detail"><a href="https://revolut.me/jonath4uch" target="_blank" rel="noopener">revolut.me/jonath4uch</a></div>
+          </div>
+
+          <div class="payment-method-card">
+            <div class="payment-method-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V10l7-6 7 6v11M9 21v-6h6v6"></path></svg>
+            </div>
+            <div class="payment-method-name">Traditional Bank Transfer (IBAN)</div>
+            <div class="payment-method-detail">Prefer a direct bank transfer? Email me and I'll send my IBAN directly — it's not published here.</div>
+          </div>
+
+          <div class="payment-method-card">
+            <div class="payment-method-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 15h4"></path></svg>
+            </div>
+            <div class="payment-method-name">iDEAL</div>
+            <div class="payment-method-detail">Available for Dutch bank accounts — payment link sent by email once your booking is confirmed.</div>
+          </div>
+
+          <div class="payment-method-card">
+            <div class="payment-method-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg>
+            </div>
+            <div class="payment-method-name">Wero</div>
+            <div class="payment-method-detail">Available on request — details sent by email.</div>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
