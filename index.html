@@ -1855,6 +1855,54 @@
   }
   .toc-rec ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
 
+  /* ── SYLLABUS: STUDY PROGRAMS CHECKLIST ── */
+  .toc-study {
+    margin-top: 2rem; padding: 1.5rem 1.6rem 1.6rem;
+    background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .toc-study-title {
+    font-family: 'Orbitron', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 1.4rem;
+  }
+  .toc-study-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2.6rem; }
+  @media (max-width: 720px) { .toc-study-grid { grid-template-columns: 1fr; } }
+  .toc-study-cat { margin-bottom: 1.5rem; }
+  .toc-study-cat-title {
+    display: flex; align-items: center; gap: 0.7rem;
+    font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 0.95rem;
+    color: var(--text); margin-bottom: 0.7rem;
+  }
+  .toc-study-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.55rem; }
+  .toc-study-item {
+    display: flex; align-items: center; gap: 0.7rem;
+    padding-left: 1.6rem; font-size: 0.88rem; flex-wrap: wrap;
+  }
+  .toc-study-item a {
+    color: var(--muted); text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.25);
+    transition: color .2s, border-color .2s;
+  }
+  .toc-study-item a:hover { color: var(--accent); border-color: var(--accent); }
+  .toc-study-item .toc-study-audio { font-size: 0.8rem; opacity: 0.8; }
+  .toc-study-item .toc-study-pending {
+    color: #6b6b6b; font-style: italic; border-bottom: none; cursor: default;
+  }
+  .toc-check {
+    flex: 0 0 auto; width: 16px; height: 16px; border-radius: 4px;
+    border: 1px solid var(--border); cursor: pointer; position: relative;
+    transition: background .2s, border-color .2s;
+  }
+  .toc-check:hover { border-color: var(--accent); }
+  .toc-study-item.done .toc-check, .toc-study-cat-title.done .toc-check {
+    background: var(--accent); border-color: var(--accent);
+  }
+  .toc-study-item.done .toc-check::after, .toc-study-cat-title.done .toc-check::after {
+    content: '✓'; font-size: 11px; color: #10100f; display: flex; align-items: center;
+    justify-content: center; position: absolute; inset: 0; line-height: 1;
+  }
+  .toc-study-item.done a:not(.toc-study-pending) { text-decoration: line-through; color: #5c5c5c; border-color: transparent; }
+  .toc-study-cat-title.done .toc-study-cat-name { text-decoration: line-through; color: #5c5c5c; }
+
   /* ── PAGE HERO (Syllabus & Blog title area) ── */
   .page-hero {
     padding: 5rem 2rem 2rem;
@@ -1975,7 +2023,7 @@
         </div>
       </div>
     </div>
-      <figure class="hero-head" role="link" tabindex="0" aria-label="Go to Courseware" onclick="show('courseware')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();show('courseware');}">
+      <figure class="hero-head" role="link" tabindex="0" aria-label="Go to Syllabus" onclick="show('syllabus')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();show('syllabus');}">
         <img src="hero-head.webp" alt="" class="hero-head-img" loading="lazy">
       </figure>
   </div>
@@ -2860,6 +2908,69 @@
           <li>Consider a "Dutch Culture Basics" module between A1 and A2 to boost motivation</li>
         </ul>
       </div>
+
+      <div class="toc-study">
+        <div class="toc-study-title">📚 Study Programs — A1–A2</div>
+        <div class="toc-study-grid">
+          <div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="a1a2-cat-podcasts"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Podcasts</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="a1a2-podcasts-easydutch"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://easydutchonline.com/" target="_blank" rel="noopener noreferrer">Easy Dutch</a></li>
+                <li class="toc-study-item" data-key="a1a2-podcasts-alledaagsevragen"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://podcastluisteren.nl/pod/Alledaagse-Vragen" target="_blank" rel="noopener noreferrer">Alledaagse vragen</a></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="a1a2-cat-nieuws"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Nieuws</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="a1a2-nieuws-nosnieuws"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://nos.nl/" target="_blank" rel="noopener noreferrer">NOS Nieuws</a></li>
+                <li class="toc-study-item" data-key="a1a2-nieuws-nosjournaal"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://npo.nl/start/serie/nos-journaal-in-makkelijke-taal" target="_blank" rel="noopener noreferrer">NOS Journaal</a></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="a1a2-cat-trivia"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Trivia</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="a1a2-trivia-knm"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://knmoefenen.nl/en/dashboard" target="_blank" rel="noopener noreferrer">KNM</a></li>
+                <li class="toc-study-item" data-key="a1a2-trivia-2voor12"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://npo.nl/start/serie/2-voor-12/afleveringen/seizoen-26" target="_blank" rel="noopener noreferrer">2 voor 12</a></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="a1a2-cat-literatuur"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Literatuur</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="a1a2-literatuur-brandweer"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1AWuXw82SFZcfaxegF9uIOUNoGEnWDA2l/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">Verhalen van de brandweer</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="a1a2-cat-grammatica"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Grammatica</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="a1a2-grammatica-atotzin"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/13_CM3jSFSuA4_C53YAXrqZ2P3aDNnhI4/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Taalcompleet A tot Zin</a></li>
+                <li class="toc-study-item" data-key="a1a2-grammatica-vlekkeloos"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1g3pzDVvSVdARJTFVKUgImgrQZ8FCch2j/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Vlekkeloos Nederlands</a></li>
+                <li class="toc-study-item" data-key="a1a2-grammatica-vandale"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1VgUZ0EeYVKg8nL9YSm2MNjFte9LQtc1I/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Van Dale Grammatica</a></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="a1a2-cat-werkboeken"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Werkboeken</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="a1a2-werkboeken-a1"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1s7X5-Re-aSpsCmti6gpA8pxvZQUnhjGO/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Taalcompleet A1</a> <a class="toc-study-audio" href="https://www.youtube.com/watch?v=ENwqf1vVrIw&list=PLtvAy73z0wVuRDYiddh6eLB0KmlvlHL2c" target="_blank" rel="noopener noreferrer">+ audio</a></li>
+                <li class="toc-study-item" data-key="a1a2-werkboeken-a2"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1Yle7hBzlPqS6tanObXGZTgyEnv_8UzNZ/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Taalcompleet A2</a> <a class="toc-study-audio" href="https://www.youtube.com/watch?v=-VeJ75e-mJI&list=PLl74A1LTuUSUaM9kmbs9jtqIWdkkRfnJ3" target="_blank" rel="noopener noreferrer">+ audio</a></li>
+                <li class="toc-study-item" data-key="a1a2-werkboeken-inactie"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1Y2eqh_tmD6GoiZUkJCP7P6zWDX5Er1gX/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Nederlands in actie</a> <a class="toc-study-audio" href="https://www.youtube.com/playlist?list=PLF-qJ8Ed0qHd7ToqP0Jvbq32T8fjeq8PH" target="_blank" rel="noopener noreferrer">+ audio</a></li>
+                <li class="toc-study-item" data-key="a1a2-werkboeken-werkstudie"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/18NKmn6bJpfG7mIkgitdbJz4mwLEIuykL/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Werk, studie en vrije tijd</a> <a class="toc-study-audio" href="https://soundcloud.com/serkan-mert-403762702/1konu" target="_blank" rel="noopener noreferrer">+ audio</a></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="a1a2-cat-oefenexamens"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Oefenexamens</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="a1a2-oefen-lezen"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://www.inburgeren.nl/examen-doen/oefenen.jsp" target="_blank" rel="noopener noreferrer">A2 - Lezen</a></li>
+                <li class="toc-study-item" data-key="a1a2-oefen-luisteren"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://www.inburgeren.nl/examen-doen/oefenen.jsp" target="_blank" rel="noopener noreferrer">A2 - Luisteren</a></li>
+                <li class="toc-study-item" data-key="a1a2-oefen-schrijven"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://www.inburgeren.nl/examen-doen/oefenen.jsp" target="_blank" rel="noopener noreferrer">A2 - Schrijven</a></li>
+                <li class="toc-study-item" data-key="a1a2-oefen-spreken"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://www.inburgeren.nl/examen-doen/oefenen.jsp" target="_blank" rel="noopener noreferrer">A2 - Spreken</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- ── B1-B2 ── -->
@@ -2950,6 +3061,69 @@
           <li>Flag B1.03 as the NT2 milestone so students know what they're working toward</li>
         </ul>
       </div>
+
+      <div class="toc-study">
+        <div class="toc-study-title">📚 Study Programs — B1–B2</div>
+        <div class="toc-study-grid">
+          <div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="b1b2-cat-werkboeken"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Werkboeken</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="b1b2-werkboeken-inactie"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1Y2eqh_tmD6GoiZUkJCP7P6zWDX5Er1gX/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Nederlands in actie</a> <a class="toc-study-audio" href="https://www.youtube.com/playlist?list=PLF-qJ8Ed0qHd7ToqP0Jvbq32T8fjeq8PH" target="_blank" rel="noopener noreferrer">+ audio</a></li>
+                <li class="toc-study-item" data-key="b1b2-werkboeken-taalsterkb1"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-pending">Taalsterk B1 <em>(link needed)</em></span></li>
+                <li class="toc-study-item" data-key="b1b2-werkboeken-taalsterkb2"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-pending">Taalsterk B2 <em>(link needed)</em></span></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="b1b2-cat-grammatica"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Grammatica</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="b1b2-grammatica-vandale"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1VgUZ0EeYVKg8nL9YSm2MNjFte9LQtc1I/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Van Dale Grammatica</a></li>
+                <li class="toc-study-item" data-key="b1b2-grammatica-vlekkeloos"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1g3pzDVvSVdARJTFVKUgImgrQZ8FCch2j/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Vlekkeloos Nederlands</a></li>
+                <li class="toc-study-item" data-key="b1b2-grammatica-schrijvenb2"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-pending">Schrijven op B2 Niveau <em>(link needed)</em></span></li>
+                <li class="toc-study-item" data-key="b1b2-grammatica-dictees"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-pending">Dictees <em>(link needed)</em></span></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="b1b2-cat-nieuws"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Nieuws</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="b1b2-nieuws-nosnieuws"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://nos.nl/" target="_blank" rel="noopener noreferrer">NOS Nieuws</a></li>
+                <li class="toc-study-item" data-key="b1b2-nieuws-nosjournaal"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://npo.nl/start/serie/nos-journaal-in-makkelijke-taal" target="_blank" rel="noopener noreferrer">NOS Journaal</a></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="b1b2-cat-literatuur"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Literatuur</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="b1b2-literatuur-delijst"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-pending">De lijst – Marelle Boersma <em>(link needed)</em></span></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="b1b2-cat-oefenexamens"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Oefenexamens</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="b1b2-oefen-lezen"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-pending">Oefenexamen: lezen <em>(link needed)</em></span></li>
+                <li class="toc-study-item" data-key="b1b2-oefen-schrijven"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-pending">Oefenexamen: schrijven <em>(link needed)</em></span></li>
+                <li class="toc-study-item" data-key="b1b2-oefen-luisteren"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-pending">Oefenexamen: luisteren <em>(link needed)</em></span></li>
+                <li class="toc-study-item" data-key="b1b2-oefen-spreken"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-pending">Oefenexamen: spreken <em>(link needed)</em></span></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="b1b2-cat-podcasts"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Podcasts</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="b1b2-podcasts-bureaubuitenland"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-pending">Bureau buitenland <em>(link needed)</em></span></li>
+                <li class="toc-study-item" data-key="b1b2-podcasts-alledaagsevragen"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://podcastluisteren.nl/pod/Alledaagse-Vragen" target="_blank" rel="noopener noreferrer">Alledaagse vragen</a></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="b1b2-cat-trivia"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Trivia</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="b1b2-trivia-knm"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://knmoefenen.nl/en/dashboard" target="_blank" rel="noopener noreferrer">KNM</a></li>
+                <li class="toc-study-item" data-key="b1b2-trivia-2voor12"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://npo.nl/start/serie/2-voor-12/afleveringen/seizoen-26" target="_blank" rel="noopener noreferrer">2 voor 12</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- ── C1-C2 ── -->
@@ -3039,6 +3213,76 @@
           <li>Consider a "Translation &amp; Interpretation" module for near-native students</li>
           <li>C2 mastery assessment should include both written and oral components</li>
         </ul>
+      </div>
+
+      <div class="toc-study">
+        <div class="toc-study-title">📚 Study Programs — C1–C2</div>
+        <div class="toc-study-grid">
+          <div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="c1c2-cat-podcasts"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Podcasts</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="c1c2-podcasts-quest"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://open.spotify.com/episode/2ljZ2Fivmp2r6uRal81fYn?si=ZldFmAViQViyq9A7Rn4eVA" target="_blank" rel="noopener noreferrer">Quest</a></li>
+                <li class="toc-study-item" data-key="c1c2-podcasts-manmicrofoon"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://podcastluisteren.nl/pod/Man-met-de-microfoon" target="_blank" rel="noopener noreferrer">Man met de microfoon</a></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="c1c2-cat-oefenexamens"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Oefenexamens</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="c1c2-oefen-cnavt"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://www.cnavt.org/nodes/voorbeeldexamens1/nl" target="_blank" rel="noopener noreferrer">CNaVT</a></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="c1c2-cat-werkboeken"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Werkboeken</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="c1c2-werkboeken-perfectie"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1QQkTMrPIb3kL74044TZQ0qSZVlwq0UxP/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Nederlands naar perfectie</a></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="c1c2-cat-wetenschappelijk"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Wetenschappelijk</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="c1c2-wet-eos"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://www.eoswetenschap.eu/artikels" target="_blank" rel="noopener noreferrer">EOS</a></li>
+                <li class="toc-study-item" data-key="c1c2-wet-studytube"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://academy.studytube.nl/discover" target="_blank" rel="noopener noreferrer">Studytube</a></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="c1c2-cat-nieuws"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Nieuws</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="c1c2-nieuws-nrc"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://nrccode.nrc.nl/bijlagen" target="_blank" rel="noopener noreferrer">NRC Bijlagen</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="c1c2-cat-grammatica"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Grammatica</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="c1c2-grammatica-spelling"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1IkkjW4AadQIJv8YpYpUMUviLUKpUlxPQ/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Regels voor de officiële spelling</a></li>
+                <li class="toc-study-item" data-key="c1c2-grammatica-ans"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://e-ans.ivdnt.org/" target="_blank" rel="noopener noreferrer">ANS</a></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="c1c2-cat-schrijven"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Schrijven</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="c1c2-schrijven-genre"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1Rvj9TY3Q2gtXKJRY3PSyRR7PGjFNR5SQ/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">Genrespecifiek schrijven in de mens- en maatschappijvlakken</a></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="c1c2-cat-series"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Series</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="c1c2-series-nosnieuws"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://nos.nl/" target="_blank" rel="noopener noreferrer">NOS Nieuws</a></li>
+                <li class="toc-study-item" data-key="c1c2-series-nosjournaal"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://npo.nl/start/serie/nos-journaal-in-makkelijke-taal" target="_blank" rel="noopener noreferrer">NOS Journaal</a></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="c1c2-cat-taalkunde"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Taalkunde</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="c1c2-taalkunde-geschiedenis"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1-gyrh-rNhlCqkiKz6n_thXn14it1DnTp/view?usp=drive_link" target="_blank" rel="noopener noreferrer">De Geschiedenis van de Nederlandse Taal</a></li>
+                <li class="toc-study-item" data-key="c1c2-taalkunde-standaardisering"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1f7MLkSHduWF-VSrtPFKpfVht8dWFkNxu/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Standaardisering Nederlands</a></li>
+                <li class="toc-study-item" data-key="c1c2-taalkunde-kriskras"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1FsLnoZEnboXCynjWaCQ12wcH7qCdJaRr/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Kris kras door het Nederlands</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -3137,6 +3381,7 @@
       '.toc-tabs',
       '.toc-module',
       '.toc-rec',
+      '.toc-study-cat',
       '.blog-card',
       '.blog-article-body > *',
       '.contact-hero',
@@ -3405,7 +3650,23 @@
     });
   }
 
+  // ── STUDY PROGRAMS CHECKLIST (per-visitor, persisted via localStorage) ──
+  function toggleStudyItem(checkboxEl) {
+    const item = checkboxEl.parentElement;
+    if (!item || !item.dataset.key) return;
+    const isDone = item.classList.toggle('done');
+    try { localStorage.setItem('td_study_' + item.dataset.key, isDone ? '1' : '0'); } catch (e) {}
+  }
+  function restoreStudyState() {
+    document.querySelectorAll('.toc-study-item[data-key], .toc-study-cat-title[data-key]').forEach((item) => {
+      try {
+        if (localStorage.getItem('td_study_' + item.dataset.key) === '1') item.classList.add('done');
+      } catch (e) {}
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', initScrollReveal);
+  document.addEventListener('DOMContentLoaded', restoreStudyState);
   (function initHeroHeadParallax(){
     const head=document.querySelector(".hero-head"); if(!head) return;
     if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -3554,412 +3815,4 @@
 <div class="gflip-front">
           <div style="margin-bottom:0.8rem;"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="20" height="14" rx="3" stroke="#fff" stroke-width="2"></rect><rect x="12" y="8" width="20" height="14" rx="3" stroke="#fff" stroke-width="2"></rect><path d="M16 22v4M20 22v4M13 26h10" stroke="#fff" stroke-width="2" stroke-linecap="round"></path></svg></div>
           <div style="font-family:'Orbitron',sans-serif;font-size:0.7rem;font-weight:700;color:#fff;margin-bottom:0.5rem;">No Barriers</div>
-          <div style="font-size:0.84rem;color:rgba(255,255,255,0.9);line-height:1.75;">Fluency comes from speaking, not reading grammar tables. You speak Dutch from the very first lesson.</div>
-        </div>
-<div class="gflip-back">
-          <div style="margin-bottom:0.8rem;"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="20" height="14" rx="3" stroke="#fff" stroke-width="2"></rect><rect x="12" y="8" width="20" height="14" rx="3" stroke="#fff" stroke-width="2"></rect><path d="M16 22v4M20 22v4M13 26h10" stroke="#fff" stroke-width="2" stroke-linecap="round"></path></svg></div>
-          <div style="font-family:'Orbitron',sans-serif;font-size:0.7rem;font-weight:700;color:#fff;margin-bottom:0.5rem;">No Barriers</div>
-          <div style="font-size:0.84rem;color:rgba(255,255,255,0.9);line-height:1.75;">Fluency comes from speaking, not reading grammar tables. You speak Dutch from the very first lesson.</div>
-        </div>
-</div>
-</div>
-        <div class="about-approach-card">
-<div class="gflip-inner">
-<div class="gflip-front">
-          <div style="margin-bottom:0.8rem;"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="6" width="5" height="24" rx="1" stroke="#fff" stroke-width="2"></rect><rect x="14" y="10" width="5" height="20" rx="1" stroke="#fff" stroke-width="2"></rect><rect x="22" y="4" width="5" height="26" rx="1" stroke="#fff" stroke-width="2"></rect></svg></div>
-          <div style="font-family:'Orbitron',sans-serif;font-size:0.7rem;font-weight:700;color:#fff;margin-bottom:0.5rem;">Structured Materials</div>
-          <div style="font-size:0.84rem;color:rgba(255,255,255,0.9);line-height:1.75;">Custom workbooks, PDFs, audio clips and slide decks — all provided and updated for each student.</div>
-        </div>
-<div class="gflip-back">
-          <div style="margin-bottom:0.8rem;"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="6" width="5" height="24" rx="1" stroke="#fff" stroke-width="2"></rect><rect x="14" y="10" width="5" height="20" rx="1" stroke="#fff" stroke-width="2"></rect><rect x="22" y="4" width="5" height="26" rx="1" stroke="#fff" stroke-width="2"></rect></svg></div>
-          <div style="font-family:'Orbitron',sans-serif;font-size:0.7rem;font-weight:700;color:#fff;margin-bottom:0.5rem;">Structured Materials</div>
-          <div style="font-size:0.84rem;color:rgba(255,255,255,0.9);line-height:1.75;">Custom workbooks, PDFs, audio clips and slide decks — all provided and updated for each student.</div>
-        </div>
-</div>
-</div>
-        <div class="about-approach-card">
-<div class="gflip-inner">
-<div class="gflip-front">
-          <div style="margin-bottom:0.8rem;"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 10a4 4 0 0 1 4-4h16a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H20l-6 6v-6H10a4 4 0 0 1-4-4V10z" stroke="#fff" stroke-width="2" stroke-linejoin="round"></path><path d="M12 18h3M12 13h12" stroke="#fff" stroke-width="2" stroke-linecap="round"></path></svg></div>
-          <div style="font-family:'Orbitron',sans-serif;font-size:0.7rem;font-weight:700;color:#fff;margin-bottom:0.5rem;">Accessible</div>
-          <div style="font-size:0.84rem;color:rgba(255,255,255,0.9);line-height:1.75;">WhatsApp support between lessons means questions never have to wait until the next session.</div>
-        </div>
-<div class="gflip-back">
-          <div style="margin-bottom:0.8rem;"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 10a4 4 0 0 1 4-4h16a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H20l-6 6v-6H10a4 4 0 0 1-4-4V10z" stroke="#fff" stroke-width="2" stroke-linejoin="round"></path><path d="M12 18h3M12 13h12" stroke="#fff" stroke-width="2" stroke-linecap="round"></path></svg></div>
-          <div style="font-family:'Orbitron',sans-serif;font-size:0.7rem;font-weight:700;color:#fff;margin-bottom:0.5rem;">Accessible</div>
-          <div style="font-size:0.84rem;color:rgba(255,255,255,0.9);line-height:1.75;">WhatsApp support between lessons means questions never have to wait until the next session.</div>
-        </div>
-</div>
-</div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ══════════ BLOG ══════════ -->
-<div class="page" id="blog">
-  <div class="page-hero">
-    <div class="page-hero-inner">
-      <div class="pt-label" style="display:none">Insights</div>
-      <div class="page-title" id="blogTitle"></div>
-    </div>
-  </div>
-  <div class="page-content">
-
-    <div id="blog-list">
-      <div class="blog-grid" style="margin-top:2.5rem;">
-        <div class="blog-card" onclick="openArticle('stigmas')">
-<div class="gflip-inner">
-<div class="gflip-front">
-          <div class="blog-card-header">
-            <div class="blog-tag">Mindset</div>
-            <div class="blog-card-title">5 Common Stigmas About Learning Dutch</div>
-          </div>
-          <div class="blog-card-body">
-            <p class="blog-card-excerpt">Think Dutch is impossibly hard? You've probably heard these myths — let's bust them once and for all.</p>
-            <span class="blog-read-more">Read More →</span>
-          </div>
-        </div>
-<div class="gflip-back">
-          <div class="blog-card-header">
-            <div class="blog-tag">Mindset</div>
-            <div class="blog-card-title">5 Common Stigmas About Learning Dutch</div>
-          </div>
-          <div class="blog-card-body">
-            <p class="blog-card-excerpt">Think Dutch is impossibly hard? You've probably heard these myths — let's bust them once and for all.</p>
-            <span class="blog-read-more">Read More →</span>
-          </div>
-        </div>
-</div>
-</div>
-        <div class="blog-card" onclick="openArticle('duration')">
-<div class="gflip-inner">
-<div class="gflip-front">
-          <div class="blog-card-header">
-            <div class="blog-tag">Study Plan</div>
-            <div class="blog-card-title">How Long Does Each Level Take?</div>
-          </div>
-          <div class="blog-card-body">
-            <p class="blog-card-excerpt">A realistic breakdown of A1 through C1 — hours, milestones, and how to track real progress.</p>
-            <span class="blog-read-more">Read More →</span>
-          </div>
-        </div>
-<div class="gflip-back">
-          <div class="blog-card-header">
-            <div class="blog-tag">Study Plan</div>
-            <div class="blog-card-title">How Long Does Each Level Take?</div>
-          </div>
-          <div class="blog-card-body">
-            <p class="blog-card-excerpt">A realistic breakdown of A1 through C1 — hours, milestones, and how to track real progress.</p>
-            <span class="blog-read-more">Read More →</span>
-          </div>
-        </div>
-</div>
-</div>
-        <div class="blog-card" onclick="openArticle('dosdonts')">
-<div class="gflip-inner">
-<div class="gflip-front">
-          <div class="blog-card-header">
-            <div class="blog-tag">Tips &amp; Tricks</div>
-            <div class="blog-card-title">Do's and Don'ts When Learning Dutch</div>
-          </div>
-          <div class="blog-card-body">
-            <p class="blog-card-excerpt">Habits that help and habits that hurt. A practical guide to making fast progress without burning out.</p>
-            <span class="blog-read-more">Read More →</span>
-          </div>
-        </div>
-<div class="gflip-back">
-          <div class="blog-card-header">
-            <div class="blog-tag">Tips &amp; Tricks</div>
-            <div class="blog-card-title">Do's and Don'ts When Learning Dutch</div>
-          </div>
-          <div class="blog-card-body">
-            <p class="blog-card-excerpt">Habits that help and habits that hurt. A practical guide to making fast progress without burning out.</p>
-            <span class="blog-read-more">Read More →</span>
-          </div>
-        </div>
-</div>
-</div>
-        <div class="blog-card" onclick="openArticle('online')">
-<div class="gflip-inner">
-<div class="gflip-front">
-          <div class="blog-card-header">
-            <div class="blog-tag">Online Learning</div>
-            <div class="blog-card-title">Reasons to Learn Dutch Online</div>
-          </div>
-          <div class="blog-card-body">
-            <p class="blog-card-excerpt">No commute, no rigid schedule, no problem. Why online Dutch lessons are often more effective.</p>
-            <span class="blog-read-more">Read More →</span>
-          </div>
-        </div>
-<div class="gflip-back">
-          <div class="blog-card-header">
-            <div class="blog-tag">Online Learning</div>
-            <div class="blog-card-title">Reasons to Learn Dutch Online</div>
-          </div>
-          <div class="blog-card-body">
-            <p class="blog-card-excerpt">No commute, no rigid schedule, no problem. Why online Dutch lessons are often more effective.</p>
-            <span class="blog-read-more">Read More →</span>
-          </div>
-        </div>
-</div>
-</div>
-      </div>
-    </div>
-
-    <!-- Article: Stigmas -->
-    <div class="blog-article" id="article-stigmas">
-      <button class="blog-back" onclick="closeArticle()">← Back to Blog</button>
-      <div class="blog-tag">Mindset</div>
-      <div class="blog-article-title">5 Common Stigmas About Learning Dutch</div>
-      <div class="blog-article-meta">By Jonathan van Hassel &nbsp;·&nbsp; 5 min read</div>
-      <div class="blog-article-body">
-        <p>Dutch has a reputation. Ask most people about learning it and they'll raise an eyebrow — "Isn't it basically German?" or "Aren't all Dutch people already fluent in English?" These myths stop a lot of people before they even start. Let's set the record straight.</p>
-        <h3>1. "Dutch is too difficult"</h3>
-        <p>For native English speakers, Dutch is actually one of the easiest languages to learn. Many words are instantly recognisable: <em>water, hand, arm, warm, winter</em>. The real challenge isn't the language — it's the mindset you bring to it.</p>
-        <div class="blog-highlight">"Dutch is the closest major language to English. With the right teacher, most students hold a basic conversation after just 10–15 hours."</div>
-        <h3>2. "Everyone speaks English anyway"</h3>
-        <p>True — the Dutch are excellent English speakers. But locals respect you enormously when you make the effort. It opens doors professionally, socially, and culturally.</p>
-        <h3>3. "You need to live in the Netherlands to learn it"</h3>
-        <p>Immersion helps, but it's not a prerequisite. Online lessons, Dutch podcasts, Netflix in Dutch, and daily practice give you everything a classroom in Amsterdam would — often with more flexibility.</p>
-        <h3>4. "I'm too old to learn a new language"</h3>
-        <p>Research consistently shows adults are better at intentional, structured language learning than children. Many of my most successful students started in their 40s and 50s.</p>
-        <h3>5. "I failed at languages in school"</h3>
-        <p>School language classes focus on grammar rules over conversation, and testing over fluency. One-on-one online lessons are the opposite: personalised, conversational, and built around your goals.</p>
-      </div>
-    </div>
-
-    <!-- Article: Duration -->
-    <div class="blog-article" id="article-duration">
-      <button class="blog-back" onclick="closeArticle()">← Back to Blog</button>
-      <div class="blog-tag">Study Plan</div>
-      <div class="blog-article-title">How Long Does Each Level Take?</div>
-      <div class="blog-article-meta">By Jonathan van Hassel &nbsp;·&nbsp; 6 min read</div>
-      <div class="blog-article-body">
-        <p>One of the most common questions: "How long will it take?" Here's a realistic breakdown based on the CEFR framework.</p>
-        <h3>A1 — Absolute Beginner (40–60 hours)</h3>
-        <p>Greetings, basic introductions, numbers, simple phrases. Most students reach A1 in 2–3 months with weekly lessons and daily self-study.</p>
-        <h3>A2 — Elementary (80–100 hours total)</h3>
-        <p>Real conversations begin. Shopping, directions, travel. Add another 3–4 months from A1.</p>
-        <div class="blog-highlight">"A2 is often the first milestone where students say 'I actually feel like I'm speaking Dutch.' It's a big confidence boost."</div>
-        <h3>B1 — Intermediate (150–200 hours total)</h3>
-        <p>The NT2 civic integration exam target. You can discuss familiar topics, express opinions, and understand clear standard speech. Typically 9–12 months of consistent study.</p>
-        <h3>B2 — Upper Intermediate (500–600 hours total)</h3>
-        <p>Interact fluently with native speakers without strain. Understand complex texts. 2 to 3 years of regular practice.</p>
-        <h3>C1 / C2 — Advanced &amp; Mastery (700–1,000+ hours)</h3>
-        <p>Near-native proficiency for academic study or professional use. The jump from B2 to C1 is less about grammar and more about nuance and vocabulary depth.</p>
-        <h3>The key variable: consistency</h3>
-        <p>20 minutes a day beats a 3-hour session once a week. Little and often keeps Dutch active in your brain and compounds your progress faster than any other method.</p>
-      </div>
-    </div>
-
-    <!-- Article: Dos and Donts -->
-    <div class="blog-article" id="article-dosdonts">
-      <button class="blog-back" onclick="closeArticle()">← Back to Blog</button>
-      <div class="blog-tag">Tips &amp; Tricks</div>
-      <div class="blog-article-title">Do's and Don'ts When Learning Dutch</div>
-      <div class="blog-article-meta">By Jonathan van Hassel &nbsp;·&nbsp; 5 min read</div>
-      <div class="blog-article-body">
-        <p>After years of teaching, I've seen the same patterns again and again. Here's the honest list.</p>
-        <h3>✓ Do's</h3>
-        <ul>
-          <li><strong>Speak from day one.</strong> Don't wait until your grammar is "good enough." Speak badly, speak often, get corrected, improve.</li>
-          <li><strong>Listen to Dutch daily.</strong> Podcasts, YouTube, Netflix — even 15 minutes trains your ear.</li>
-          <li><strong>Learn in context.</strong> Don't memorise word lists. Learn words in sentences, in situations, in stories.</li>
-          <li><strong>Make mistakes on purpose.</strong> Push beyond what you know. Comfortable practice produces slow progress.</li>
-          <li><strong>Review regularly.</strong> Spaced repetition (apps like Anki) helps vocabulary stick with minimal effort.</li>
-        </ul>
-        <h3>✗ Don'ts</h3>
-        <ul>
-          <li><strong>Don't rely on translation.</strong> Think in Dutch, even badly. Translation slows you down.</li>
-          <li><strong>Don't let the Dutch switch to English.</strong> Politely ask them to keep speaking Dutch.</li>
-          <li><strong>Don't study for hours then disappear for weeks.</strong> Consistency beats intensity.</li>
-          <li><strong>Don't obsess over de/het.</strong> They come naturally with exposure — don't let them block you.</li>
-          <li><strong>Don't compare yourself to others.</strong> Focus on your own progress only.</li>
-        </ul>
-        <div class="blog-highlight">"The students who improve fastest aren't the most talented — they're the most consistent and the least afraid of sounding silly."</div>
-      </div>
-    </div>
-
-    <!-- Article: Online -->
-    <div class="blog-article" id="article-online">
-      <button class="blog-back" onclick="closeArticle()">← Back to Blog</button>
-      <div class="blog-tag">Online Learning</div>
-      <div class="blog-article-title">Reasons to Learn Dutch Online</div>
-      <div class="blog-article-meta">By Jonathan van Hassel &nbsp;·&nbsp; 4 min read</div>
-      <div class="blog-article-body">
-        <p>When I tell people I teach Dutch online, some are sceptical. Not only can you — for many students, online is actually more effective. Here's why.</p>
-        <h3>1. You set the schedule</h3>
-        <p>Life doesn't pause for language school. Whether you're in Bangkok, Berlin, or Buenos Aires, your lesson is one click away. No commute, no rescheduling headaches.</p>
-        <h3>2. One-on-one attention</h3>
-        <p>In a classroom of 15, you might speak Dutch for 5 minutes. In a private session, you speak Dutch for the whole lesson — with personalised feedback every step of the way.</p>
-        <div class="blog-highlight">"Students in private online lessons progress 2–3x faster than those in group classroom settings, simply because every minute is focused on them."</div>
-        <h3>3. A distraction-free environment</h3>
-        <p>Your own space, your own pace. Many students find it easier to focus and less embarrassing to make mistakes in a familiar, private environment.</p>
-        <h3>4. Access to native speakers worldwide</h3>
-        <p>Online removes geography as a barrier. You learn from a native Dutch speaker regardless of where either of you is — bringing authentic pronunciation and cultural knowledge to every lesson.</p>
-        <h3>5. Better tools, better lessons</h3>
-        <p>Shared screens, interactive documents, YouTube clips, real-time corrections — online lessons come with tools that a whiteboard simply can't match.</p>
-        <h3>6. More affordable</h3>
-        <p>Without travel and classroom overhead, online private lessons can deliver stronger value while staying fully personalized.</p>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ══════════ CONTACT ══════════ -->
-<div class="page" id="contact">
-  <div class="contact-page">
-    <div class="contact-hero">
-      <div class="contact-kicker">Book a Lesson / Get in Touch</div>
-      <div class="page-title" id="contactTitle"></div>
-      <p class="contact-subtitle">Use the form below to request your package and preferred schedule. I'll confirm availability and send payment details by email.</p>
-
-      <div class="booking-form-wrap">
-        <iframe id="bookingFormFrame" class="booking-form-frame" style="display:none;" title="Booking form" loading="lazy"></iframe>
-        <p id="bookingFormOpenLink" style="display:none; margin-top:0.8rem;">
-          <a href="javascript:void(0)" onclick="openBookingForm()" class="footer-link">Prefer a new tab? Open the booking form directly →</a>
-        </p>
-        <div id="bookingFormFallback" class="booking-form-fallback" style="display:none;">
-          <form id="quickBookingForm" onsubmit="return submitQuickBookingForm(event)">
-            <div class="qbf-row">
-              <div class="qbf-field">
-                <label for="qbfName">Name</label>
-                <input type="text" id="qbfName" required placeholder="Your full name">
-              </div>
-              <div class="qbf-field">
-                <label for="qbfEmail">Email</label>
-                <input type="email" id="qbfEmail" required placeholder="you@example.com">
-              </div>
-            </div>
-            <div class="qbf-row">
-              <div class="qbf-field">
-                <label for="qbfPackage">Package</label>
-                <select id="qbfPackage">
-                  <option value="30-Minute Trial - $12">30-Minute Trial — $12</option>
-                  <option value="1 Hour - €25">1 Hour — €25</option>
-                  <option value="5 Hours - €120">5 Hours — €120</option>
-                  <option value="10 Hours - €230">10 Hours — €230</option>
-                  <option value="50 Hours (Block 1) - €1.050">50 Hours (Block 1) — €1.050</option>
-                  <option value="100 Hours (Blocks 1+2) - €1.900">100 Hours (Blocks 1+2) — €1.900</option>
-                  <option value="150 Hours (Complete Course) - €2.550">150 Hours (Complete Course) — €2.550</option>
-                  <option value="Not sure yet">Not sure yet</option>
-                </select>
-              </div>
-              <div class="qbf-field">
-                <label for="qbfSchedule">Preferred Days / Times</label>
-                <input type="text" id="qbfSchedule" placeholder="e.g. weekday evenings, CET">
-              </div>
-            </div>
-            <div class="qbf-field">
-              <label for="qbfMessage">Message <span class="qbf-optional">(optional)</span></label>
-              <textarea id="qbfMessage" rows="3" placeholder="Your current level, goals, or anything else I should know"></textarea>
-            </div>
-            <button type="submit" class="qbf-submit">Send Request →</button>
-            <p class="qbf-note">This opens your email app with everything filled in for you to review and send — nothing is sent automatically.</p>
-          </form>
-        </div>
-      </div>
-
-      <div class="contact-actions">
-        <span class="contact-chip">Requests</span>
-        <span class="contact-chip">Purchases</span>
-        <span class="contact-chip">Packages</span>
-        <span class="contact-chip">General Contact</span>
-      </div>
-
-      <div class="payment-methods">
-        <div class="payment-methods-label">Accepted Payment Methods</div>
-        <div class="payment-methods-grid">
-
-          <div class="payment-method-card">
-            <div class="payment-method-icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 15h6a3.5 3.5 0 0 0 0-7H8.5L7 15z"></path><path d="M9.5 8H15a3.5 3.5 0 0 1 0 7"></path></svg>
-            </div>
-            <div class="payment-method-name">PayPal</div>
-            <div class="payment-method-detail"><a href="https://paypal.me/jonathanvanhassel34" target="_blank" rel="noopener">paypal.me/jonathanvanhassel34</a></div>
-          </div>
-
-          <div class="payment-method-card">
-            <div class="payment-method-icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="5" width="20" height="14" rx="2"></rect><path d="M2 10h20"></path></svg>
-            </div>
-            <div class="payment-method-name">Credit / Debit Card</div>
-            <div class="payment-method-detail">Pay by card via the PayPal link above — no PayPal account needed.</div>
-          </div>
-
-          <div class="payment-method-card">
-            <div class="payment-method-icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 21V9"></path></svg>
-            </div>
-            <div class="payment-method-name">Bank Transfer (Revolut link)</div>
-            <div class="payment-method-detail"><a href="https://revolut.me/jonath4uch" target="_blank" rel="noopener">revolut.me/jonath4uch</a></div>
-          </div>
-
-          <div class="payment-method-card">
-            <div class="payment-method-icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V10l7-6 7 6v11M9 21v-6h6v6"></path></svg>
-            </div>
-            <div class="payment-method-name">Traditional Bank Transfer (IBAN)</div>
-            <div class="payment-method-detail">Prefer a direct bank transfer? Email me and I'll send my IBAN directly — it's not published here.</div>
-          </div>
-
-          <div class="payment-method-card">
-            <div class="payment-method-icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 15h4"></path></svg>
-            </div>
-            <div class="payment-method-name">iDEAL</div>
-            <div class="payment-method-detail">Available for Dutch bank accounts — payment link sent by email once your booking is confirmed.</div>
-          </div>
-
-          <div class="payment-method-card">
-            <div class="payment-method-icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg>
-            </div>
-            <div class="payment-method-name">Wero</div>
-            <div class="payment-method-detail">Available on request — details sent by email.</div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<footer class="site-footer">
-  <div class="site-footer-inner">
-    <div>
-      <div class="footer-title">Talking Dutch</div>
-      <div class="footer-text">Online Dutch lessons with native tutor Jonathan van Hassel. Practical fluency, exam prep, and real conversation confidence.</div>
-    </div>
-    <div>
-      <div class="footer-title">Contact</div>
-      <span class="footer-text">vanhassel1988@gmail.com</span><br>
-      <span class="footer-text">Teacher: Jonathan van Hassel</span><br>
-      <span class="footer-text">Format: Online classes worldwide</span>
-    </div>
-    <div>
-      <div class="footer-title">Quick Links</div>
-      <a class="footer-link" href="javascript:void(0)" onclick="show('about')">About</a><br>
-      <a class="footer-link" href="javascript:void(0)" onclick="show('services')">Packages</a><br>
-      <a class="footer-link" href="javascript:void(0)" onclick="show('contact')">Contact</a>
-    </div>
-  </div>
-  <div class="site-footer-bottom">
-    <span>Copyright <span id="footerYear"></span> Talking Dutch</span>
-    <span>Professor/Tutor: Jonathan van Hassel</span>
-  </div>
-</footer>
-
-<script>
-  const footerYear = document.getElementById('footerYear');
-  if (footerYear) footerYear.textContent = String(new Date().getFullYear());
-</script>
-
-
-
-
-
-</body></html>
+          <div style="font-size:0.84rem;color:rgba(255,255,255,0.9);line-height:1.75;">Fluency comes from speaking, not reading grammar tables. You speak Dutch from the very first 
