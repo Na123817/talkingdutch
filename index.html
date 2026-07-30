@@ -334,7 +334,7 @@
     background-image:
       linear-gradient(rgba(5,3,1,0.85), rgba(5,3,1,0.85)),
       linear-gradient(#e87722, #e87722),
-      url('https://images.pexels.com/photos/33212476/pexels-photo-33212476.jpeg?auto=compress&w=1920');
+      url('courseware-bg-amsterdam.jpg');
     background-blend-mode: normal, color, normal;
     background-size: cover;
     background-position: center center;
@@ -367,7 +367,7 @@
     background-image:
       linear-gradient(200deg, rgba(5,3,1,0.88), rgba(5,3,1,0.78)),
       linear-gradient(#e87722, #e87722),
-      url('https://images.pexels.com/photos/1624661/pexels-photo-1624661.jpeg?auto=compress&w=1920');
+      url('faq-bg.jpg');
     background-blend-mode: normal, color, normal;
     background-size: cover;
     background-position: center top;
@@ -391,9 +391,10 @@
       linear-gradient(#f3b787, #f3b787),
       url('https://images.pexels.com/photos/33277083/pexels-photo-33277083.jpeg?auto=compress&w=1920');
     background-blend-mode: normal, color, normal;
-    background-size: 92%;
-    background-position: center top;
+    background-size: 100% 130%;
+    background-position: center bottom;
     background-repeat: no-repeat;
+    background-attachment: fixed;
   }
 
   #courseware .content, #faq .content,
@@ -460,7 +461,7 @@
   @media (prefers-reduced-motion: reduce) { .hero-head-img { animation: none; opacity: 0.95; filter: saturate(1.1) drop-shadow(0 0 24px rgba(232,119,34,0.4)); } }
   .core-band { position: relative; background: transparent; line-height: 0; display: flex; justify-content: center; perspective: 1100px; --cpx:0px; --cpy:0px; --crx:0deg; --cry:0deg; }
   .core-band-img {
-    display: block; width: min(90%, 900px); height: auto; cursor: pointer;
+    display: block; width: min(54vw, 290px); height: auto; cursor: pointer;
     -webkit-mask-image: radial-gradient(ellipse 72% 68% at 50% 50%, #000 50%, rgba(0,0,0,0.35) 72%, transparent 86%);
             mask-image: radial-gradient(ellipse 72% 68% at 50% 50%, #000 50%, rgba(0,0,0,0.35) 72%, transparent 86%);
     filter: drop-shadow(0 0 55px rgba(232,119,34,0.28)) saturate(1.1);
@@ -519,7 +520,7 @@
 
   .hero-body { margin-top: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
   .accent-bar { width: 100%; height: 1px; background: #3a3a3a; margin-bottom: 1.2rem; border: none; }
-  .hero-body p { font-size: 1rem; line-height: 1.85; color: #b5b5b5; margin-bottom: 0.8rem; text-align: left; }
+  .hero-body p { font-size: 1rem; line-height: 1.85; color: #f7ecd9; margin-bottom: 0.8rem; text-align: center; }
 
   /* ── PAGE TITLES ── */
   .content { max-width: 900px; margin: 0 auto; padding: 5rem 2rem 6rem; }
@@ -1328,13 +1329,14 @@
   .pt-heading .accent { color: var(--accent); }
 
   /* ── HERO UPDATES ── */
-  .hero-tagline { font-size: 1.05rem; line-height: 1.85; color: #b5b5b5; margin-bottom: 1.4rem; text-align: left; }
+  .hero-tagline { font-size: 1.05rem; line-height: 1.85; color: #f7ecd9; margin-bottom: 1.4rem; text-align: center; }
   .hero-features {
-    list-style: none; padding: 0; margin: 0 0 1.8rem;
-    display: block; text-align: left;
+    list-style: none; padding: 0; margin: 0 auto 1.8rem;
+    display: flex; flex-direction: column; align-items: stretch;
+    text-align: left; width: max-content; max-width: 100%;
   }
   .hero-features li {
-    color: #b5b5b5; font-size: 0.95rem; line-height: 1.7;
+    color: #f7ecd9; font-size: 0.95rem; line-height: 1.7;
     padding-left: 1.4rem; position: relative; margin-bottom: 0.3rem;
   }
   .hero-features li::before {
@@ -2609,6 +2611,10 @@
     </div>
   </div>
 
+  <div class="core-band" style="margin-top:3rem;">
+    <img src="core-band.webp" alt="" class="core-band-img" id="coreBandImg">
+  </div>
+
   <!-- ── TESTIMONIALS SECTION ── -->
   <div class="testimonials-section">
     <div class="testimonials-inner">
@@ -2811,9 +2817,6 @@
       </div>
 </div>
 </div>
-    </div>
-    <div class="core-band" style="margin-top:3rem;">
-      <img src="core-band.webp" alt="" class="core-band-img" id="coreBandImg">
     </div>
   </div>
 </div>
