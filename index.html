@@ -301,7 +301,7 @@
   .page { display: none; }
   .page.active { display: block; }
   /* Homepage uses a pure-black background instead of dark gray */
-  body:has(#home.active) {
+  body[data-page="home"] {
     background-color: #000;
     background-image:
       linear-gradient(rgba(5,3,1,0.82), rgba(5,3,1,0.9)),
@@ -312,7 +312,7 @@
     background-position: center top;
     background-repeat: no-repeat;
   }
-  body:has(#about.active) {
+  body[data-page="about"] {
     background-color: #000;
     background-image:
       linear-gradient(160deg, rgba(6,3,1,0.86), rgba(6,3,1,0.78)),
@@ -329,7 +329,7 @@
   #about .about-language-card, #about .about-approach-card { text-align: left; }
 
   /* Inner pages: match homepage — black bg + centered headings */
-  body:has(#courseware.active) {
+  body[data-page="courseware"] {
     background-color: #000;
     background-image:
       linear-gradient(rgba(5,3,1,0.85), rgba(5,3,1,0.85)),
@@ -340,7 +340,7 @@
     background-position: center center;
     background-repeat: no-repeat;
   }
-  body:has(#services.active) {
+  body[data-page="services"] {
     background-color: #000;
     background-image:
       linear-gradient(rgba(5,3,1,0.85), rgba(5,3,1,0.85)),
@@ -351,7 +351,7 @@
     background-position: right center;
     background-repeat: no-repeat;
   }
-  body:has(#syllabus.active) {
+  body[data-page="syllabus"] {
     background-color: #000;
     background-image:
       linear-gradient(rgba(5,3,1,0.85), rgba(5,3,1,0.85)),
@@ -362,7 +362,7 @@
     background-position: center center;
     background-repeat: no-repeat;
   }
-  body:has(#faq.active) {
+  body[data-page="faq"] {
     background-color: #000;
     background-image:
       linear-gradient(200deg, rgba(5,3,1,0.88), rgba(5,3,1,0.78)),
@@ -373,7 +373,7 @@
     background-position: center top;
     background-repeat: no-repeat;
   }
-  body:has(#blog.active) {
+  body[data-page="blog"] {
     background-color: #000;
     background-image:
       linear-gradient(rgba(5,3,1,0.85), rgba(5,3,1,0.85)),
@@ -384,14 +384,14 @@
     background-position: center bottom;
     background-repeat: no-repeat;
   }
-  body:has(#contact.active) {
+  body[data-page="contact"] {
     background-color: #000;
     background-image:
       radial-gradient(ellipse at center, rgba(5,3,1,0.6), rgba(5,3,1,0.75)),
       linear-gradient(#f3b787, #f3b787),
       url('contact-bg-schiphol.jpg');
     background-blend-mode: normal, color, normal;
-    background-size: contain;
+    background-size: 100% 100%;
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -460,23 +460,36 @@
   }
   @media (prefers-reduced-motion: reduce) { .hero-head-img { animation: none; opacity: 0.95; filter: saturate(1.1) drop-shadow(0 0 24px rgba(232,119,34,0.4)); } }
   .core-band { position: relative; background: transparent; line-height: 0; display: flex; justify-content: center; perspective: 1100px; --cpx:0px; --cpy:0px; --crx:0deg; --cry:0deg; }
-  .core-band-img {
-    display: block; width: min(54vw, 290px); height: auto; cursor: pointer;
+  .core-band-mask {
+    display: block; width: min(54vw, 290px); cursor: pointer;
     -webkit-mask-image: radial-gradient(ellipse 48% 48% at 50% 50%, #000 45%, rgba(0,0,0,0.4) 75%, transparent 100%);
             mask-image: radial-gradient(ellipse 48% 48% at 50% 50%, #000 45%, rgba(0,0,0,0.4) 75%, transparent 100%);
-    filter: hue-rotate(9.5deg) saturate(0.86) brightness(1.31) drop-shadow(0 0 55px rgba(232,119,34,0.28));
+    -webkit-mask-mode: alpha;
+            mask-mode: alpha;
     transform-style: preserve-3d;
-    transition: filter .35s ease;
     animation: coreFloat 8s ease-in-out infinite;
-    will-change: transform, filter;
   }
-  .core-band-img:hover { filter: hue-rotate(9.5deg) saturate(1.0) brightness(1.38) drop-shadow(0 0 80px rgba(232,119,34,0.55)); }
+  .core-band-img {
+    display: block; width: 100%; height: auto;
+    transition: filter .35s ease;
+    animation: coreBreathe 7s ease-in-out infinite;
+    will-change: filter;
+  }
+  .core-band-mask:hover .core-band-img { filter: drop-shadow(0 0 80px rgba(232,119,34,0.55)) saturate(1.25) brightness(1.08); }
   @keyframes coreFloat {
     0%   { transform: translate(var(--cpx), var(--cpy)) rotateX(var(--crx)) rotateY(var(--cry)) scale(1); }
     50%  { transform: translate(var(--cpx), calc(var(--cpy) - 14px)) rotateX(var(--crx)) rotateY(var(--cry)) scale(1.015); }
     100% { transform: translate(var(--cpx), var(--cpy)) rotateX(var(--crx)) rotateY(var(--cry)) scale(1); }
   }
-  @media (prefers-reduced-motion: reduce) { .core-band-img { animation: none; } }
+  @keyframes coreBreathe {
+    0%, 28% { opacity: 0.95; filter: blur(0) saturate(1.18) brightness(1.02) drop-shadow(0 0 55px rgba(232,119,34,0.5)); }
+    50%, 60% { opacity: 0.34; filter: blur(9px) saturate(0.7) brightness(0.9) drop-shadow(0 0 30px rgba(232,119,34,0.25)); }
+    82%, 100% { opacity: 0.95; filter: blur(0) saturate(1.18) brightness(1.02) drop-shadow(0 0 55px rgba(232,119,34,0.5)); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .core-band-mask { animation: none; }
+    .core-band-img { animation: none; opacity: 0.95; filter: saturate(1.1) drop-shadow(0 0 24px rgba(232,119,34,0.4)); }
+  }
 
   .hero-inner {
     display: flex;
@@ -2189,7 +2202,7 @@
   .page-loader.is-hidden { opacity: 0; pointer-events: none; }
   .page-loader-bg {
     position: absolute; inset: 0;
-    background-image: url('loader-seal.jpg');
+    background-image: url('loader-coast.jpg');
     background-size: cover;
     background-position: center;
     filter: sepia(0.55) saturate(1.7) hue-rotate(-12deg) contrast(1.08) brightness(0.95);
@@ -2612,7 +2625,9 @@
   </div>
 
   <div class="core-band" style="margin-top:3rem;">
-    <img src="core-band.webp" alt="" class="core-band-img" id="coreBandImg">
+    <div class="core-band-mask">
+      <img src="core-band.webp" alt="" class="core-band-img" id="coreBandImg">
+    </div>
   </div>
 
   <!-- ── TESTIMONIALS SECTION ── -->
@@ -3769,7 +3784,9 @@
   }
 
   // ── TAB SWITCHING ──
+  document.body.setAttribute('data-page', (document.querySelector('.page.active') || {}).id || 'home');
   function show(id) {
+    document.body.setAttribute('data-page', id);
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
     const page = document.getElementById(id);
