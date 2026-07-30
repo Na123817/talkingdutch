@@ -191,7 +191,17 @@
     z-index: 0;
     animation: gridFloat 48s linear infinite;
   }
-  body::after { content: none; }
+  body::after {
+    content: '';
+    position: fixed;
+    inset: -10%;
+    background:
+      radial-gradient(ellipse 55% 45% at 18% 12%, rgba(232,119,34,0.16), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 85% 82%, rgba(232,119,34,0.13), transparent 62%);
+    pointer-events: none;
+    z-index: 0;
+    animation: glowDrift 22s ease-in-out infinite alternate;
+  }
   body > * {
     position: relative;
     z-index: 1;
@@ -303,7 +313,8 @@
   body:has(#services.active),
   body:has(#syllabus.active),
   body:has(#faq.active),
-  body:has(#blog.active) { background: #000; }
+  body:has(#blog.active),
+  body:has(#contact.active) { background: #000; }
 
   #courseware .content, #faq .content,
   #services .services-wrap,
@@ -1599,6 +1610,20 @@
     font-family: 'Orbitron', sans-serif; font-size: 0.6rem;
     letter-spacing: 0.15em; text-transform: uppercase; color: #fff;
   }
+  .blog-card-toc {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-direction: column; gap: 0.55rem;
+  }
+  .blog-card-toc li {
+    font-family: 'Orbitron', sans-serif; font-size: 0.66rem;
+    letter-spacing: 0.03em; text-transform: uppercase;
+    color: var(--accent); line-height: 1.4;
+  }
+  .blog-card-toc-sub {
+    display: block; font-family: 'Barlow', sans-serif; text-transform: none;
+    letter-spacing: normal; color: rgba(255,255,255,0.75);
+    font-size: 0.8rem; margin-top: 0.2rem;
+  }
   .blog-article { display: none; }
   .blog-article.active { display: block; }
   .blog-back {
@@ -1772,7 +1797,7 @@
   .toc-module-header:hover .toc-module-title { color: var(--accent); }
   .toc-module-left { display: flex; align-items: center; gap: 1rem; }
   .toc-module-num {
-    font-family: 'Orbitron', sans-serif; font-size: 0.62rem; letter-spacing: 0.1em;
+    font-family: 'Orbitron', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
     color: var(--accent); min-width: 2.5rem;
   }
   .toc-module-title {
@@ -2919,58 +2944,56 @@
         <div class="toc-study-grid">
           <div>
             <div class="toc-study-cat">
-              <div class="toc-study-cat-title" data-key="a1a2-cat-podcasts"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Podcasts</span></div>
+              <div class="toc-study-cat-title" data-key="a1a2-cat-werkboeken"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Workbooks</span></div>
               <ul class="toc-study-list">
-                <li class="toc-study-item" data-key="a1a2-podcasts-easydutch"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://easydutchonline.com/" target="_blank" rel="noopener noreferrer">Easy Dutch</a></li>
-                <li class="toc-study-item" data-key="a1a2-podcasts-alledaagsevragen"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://podcastluisteren.nl/pod/Alledaagse-Vragen" target="_blank" rel="noopener noreferrer">Alledaagse vragen</a></li>
+                <li class="toc-study-item" data-key="a1a2-werkboeken-ingang"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1PbEpRHI5-oI4bY5S28I72ZmpX7bs-oVZ/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Nederlands in gang</a></li>
+                <li class="toc-study-item" data-key="a1a2-werkboeken-inactie"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/13rzdu42Rht0Lu8gLlLQQF564ErHAV97P/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Nederlands in actie</a> <a class="toc-study-audio" href="https://www.youtube.com/playlist?list=PLF-qJ8Ed0qHd7ToqP0Jvbq32T8fjeq8PH" target="_blank" rel="noopener noreferrer">+ audio</a></li>
               </ul>
             </div>
             <div class="toc-study-cat">
-              <div class="toc-study-cat-title" data-key="a1a2-cat-nieuws"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Nieuws</span></div>
+              <div class="toc-study-cat-title" data-key="a1a2-cat-grammatica"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Grammar</span></div>
               <ul class="toc-study-list">
-                <li class="toc-study-item" data-key="a1a2-nieuws-nosnieuws"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://nos.nl/" target="_blank" rel="noopener noreferrer">NOS Nieuws</a></li>
-                <li class="toc-study-item" data-key="a1a2-nieuws-nosjournaal"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://npo.nl/start/serie/nos-journaal-in-makkelijke-taal" target="_blank" rel="noopener noreferrer">NOS Journaal</a></li>
+                <li class="toc-study-item" data-key="a1a2-grammatica-vandale"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1cw_7lbItLjiBaVvGcoFpH7KUPOg620KT/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Van Dale</a></li>
+                <li class="toc-study-item" data-key="a1a2-grammatica-spelling"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/14ZiBnCheV8Xq9GOG8zhrjNBnYKrmy2g5/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Regels voor de officiële spelling</a></li>
+                <li class="toc-study-item" data-key="a1a2-grammatica-dictees"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://onzetaal.nl/taalloket/oefenen-voor-dictees" target="_blank" rel="noopener noreferrer">Dictees</a></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="a1a2-cat-podcasts"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Podcasts</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="a1a2-podcasts-easydutch"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://easydutchonline.com/" target="_blank" rel="noopener noreferrer">Easy Dutch</a></li>
+                <li class="toc-study-item" data-key="a1a2-podcasts-inburgering"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://inburgering.org/nl/podcasts" target="_blank" rel="noopener noreferrer">Inburgering A2-B1</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="a1a2-cat-nieuws"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">News</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="a1a2-nieuws-journaal"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://over.nos.nl/onze-programmas/journaal-in-makkelijke-taal/" target="_blank" rel="noopener noreferrer">NOS Journaal</a></li>
+                <li class="toc-study-item" data-key="a1a2-nieuws-nieuws"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://npo.nl/start/serie/nos-journaal-in-makkelijke-taal/afleveringen" target="_blank" rel="noopener noreferrer">NOS Nieuws</a></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="a1a2-cat-oefenexamens"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Practice exam</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="a1a2-oefen-lezen"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://www.inburgeren.nl/examen-doen/oefenen.jsp" target="_blank" rel="noopener noreferrer">A2 - Lezen</a></li>
+                <li class="toc-study-item" data-key="a1a2-oefen-luisteren"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://www.inburgeren.nl/examen-doen/oefenen.jsp" target="_blank" rel="noopener noreferrer">A2 - Luisteren</a></li>
+                <li class="toc-study-item" data-key="a1a2-oefen-schrijven"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://www.inburgeren.nl/examen-doen/oefenen.jsp" target="_blank" rel="noopener noreferrer">A2 - Schrijven</a></li>
+                <li class="toc-study-item" data-key="a1a2-oefen-spreken"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://www.inburgeren.nl/examen-doen/oefenen.jsp" target="_blank" rel="noopener noreferrer">A2 - Spreken</a></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="a1a2-cat-literatuur"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Literature</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="a1a2-literatuur-brandweer"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1NuA4DWRlgrDuw8D8QLNRxpReBFRW_sFP/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Verhalen van de brandweer</a></li>
               </ul>
             </div>
             <div class="toc-study-cat">
               <div class="toc-study-cat-title" data-key="a1a2-cat-trivia"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Trivia</span></div>
               <ul class="toc-study-list">
                 <li class="toc-study-item" data-key="a1a2-trivia-knm"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://knmoefenen.nl/en/dashboard" target="_blank" rel="noopener noreferrer">KNM</a></li>
-                <li class="toc-study-item" data-key="a1a2-trivia-2voor12"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://npo.nl/start/serie/2-voor-12/afleveringen/seizoen-26" target="_blank" rel="noopener noreferrer">2 voor 12</a></li>
-              </ul>
-            </div>
-            <div class="toc-study-cat">
-              <div class="toc-study-cat-title" data-key="a1a2-cat-literatuur"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Literatuur</span></div>
-              <ul class="toc-study-list">
-                <li class="toc-study-item" data-key="a1a2-literatuur-brandweer"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1AWuXw82SFZcfaxegF9uIOUNoGEnWDA2l/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">Verhalen van de brandweer</a></li>
-              </ul>
-            </div>
-          </div>
-          <div>
-            <div class="toc-study-cat">
-              <div class="toc-study-cat-title" data-key="a1a2-cat-grammatica"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Grammatica</span></div>
-              <ul class="toc-study-list">
-                <li class="toc-study-item" data-key="a1a2-grammatica-atotzin"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/13_CM3jSFSuA4_C53YAXrqZ2P3aDNnhI4/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Taalcompleet A tot Zin</a></li>
-                <li class="toc-study-item" data-key="a1a2-grammatica-vlekkeloos"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1g3pzDVvSVdARJTFVKUgImgrQZ8FCch2j/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Vlekkeloos Nederlands</a></li>
-                <li class="toc-study-item" data-key="a1a2-grammatica-vandale"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1VgUZ0EeYVKg8nL9YSm2MNjFte9LQtc1I/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Van Dale Grammatica</a></li>
-              </ul>
-            </div>
-            <div class="toc-study-cat">
-              <div class="toc-study-cat-title" data-key="a1a2-cat-werkboeken"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Werkboeken</span></div>
-              <ul class="toc-study-list">
-                <li class="toc-study-item" data-key="a1a2-werkboeken-a1"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1s7X5-Re-aSpsCmti6gpA8pxvZQUnhjGO/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Taalcompleet A1</a> <a class="toc-study-audio" href="https://www.youtube.com/watch?v=ENwqf1vVrIw&list=PLtvAy73z0wVuRDYiddh6eLB0KmlvlHL2c" target="_blank" rel="noopener noreferrer">+ audio</a></li>
-                <li class="toc-study-item" data-key="a1a2-werkboeken-a2"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1Yle7hBzlPqS6tanObXGZTgyEnv_8UzNZ/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Taalcompleet A2</a> <a class="toc-study-audio" href="https://www.youtube.com/watch?v=-VeJ75e-mJI&list=PLl74A1LTuUSUaM9kmbs9jtqIWdkkRfnJ3" target="_blank" rel="noopener noreferrer">+ audio</a></li>
-                <li class="toc-study-item" data-key="a1a2-werkboeken-inactie"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1Y2eqh_tmD6GoiZUkJCP7P6zWDX5Er1gX/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Nederlands in actie</a> <a class="toc-study-audio" href="https://www.youtube.com/playlist?list=PLF-qJ8Ed0qHd7ToqP0Jvbq32T8fjeq8PH" target="_blank" rel="noopener noreferrer">+ audio</a></li>
-                <li class="toc-study-item" data-key="a1a2-werkboeken-werkstudie"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/18NKmn6bJpfG7mIkgitdbJz4mwLEIuykL/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Werk, studie en vrije tijd</a> <a class="toc-study-audio" href="https://soundcloud.com/serkan-mert-403762702/1konu" target="_blank" rel="noopener noreferrer">+ audio</a></li>
-              </ul>
-            </div>
-            <div class="toc-study-cat">
-              <div class="toc-study-cat-title" data-key="a1a2-cat-oefenexamens"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Oefenexamens</span></div>
-              <ul class="toc-study-list">
-                <li class="toc-study-item" data-key="a1a2-oefen-lezen"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://www.inburgeren.nl/examen-doen/oefenen.jsp" target="_blank" rel="noopener noreferrer">A2 - Lezen</a></li>
-                <li class="toc-study-item" data-key="a1a2-oefen-luisteren"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://www.inburgeren.nl/examen-doen/oefenen.jsp" target="_blank" rel="noopener noreferrer">A2 - Luisteren</a></li>
-                <li class="toc-study-item" data-key="a1a2-oefen-schrijven"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://www.inburgeren.nl/examen-doen/oefenen.jsp" target="_blank" rel="noopener noreferrer">A2 - Schrijven</a></li>
-                <li class="toc-study-item" data-key="a1a2-oefen-spreken"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://www.inburgeren.nl/examen-doen/oefenen.jsp" target="_blank" rel="noopener noreferrer">A2 - Spreken</a></li>
+                <li class="toc-study-item" data-key="a1a2-trivia-slimstemens"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://npo.nl/start/serie/de-slimste-mens/afleveringen/seizoen-29" target="_blank" rel="noopener noreferrer">De slimste mens</a></li>
               </ul>
             </div>
           </div>
@@ -3072,57 +3095,56 @@
         <div class="toc-study-grid">
           <div>
             <div class="toc-study-cat">
-              <div class="toc-study-cat-title" data-key="b1b2-cat-werkboeken"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Werkboeken</span></div>
+              <div class="toc-study-cat-title" data-key="b1b2-cat-werkboeken"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Workbooks</span></div>
               <ul class="toc-study-list">
-                <li class="toc-study-item" data-key="b1b2-werkboeken-inactie"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1Y2eqh_tmD6GoiZUkJCP7P6zWDX5Er1gX/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Nederlands in actie</a> <a class="toc-study-audio" href="https://www.youtube.com/playlist?list=PLF-qJ8Ed0qHd7ToqP0Jvbq32T8fjeq8PH" target="_blank" rel="noopener noreferrer">+ audio</a></li>
-                <li class="toc-study-item" data-key="b1b2-werkboeken-taalsterkb1"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-pending">Taalsterk B1 <em>(link needed)</em></span></li>
-                <li class="toc-study-item" data-key="b1b2-werkboeken-taalsterkb2"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-pending">Taalsterk B2 <em>(link needed)</em></span></li>
+                <li class="toc-study-item" data-key="b1b2-werkboeken-inactie"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1jLGtU6i3ZBP4ZMzobuTUYJ7gJE20vEi4/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Nederlands in actie</a> <a class="toc-study-audio" href="https://www.youtube.com/playlist?list=PLF-qJ8Ed0qHd7ToqP0Jvbq32T8fjeq8PH" target="_blank" rel="noopener noreferrer">+ audio</a></li>
+                <li class="toc-study-item" data-key="b1b2-werkboeken-opniveau"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1VnMxxc2_SnKrcbsnOuiO1Ko5fR7tE9qx/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Nederlands op niveau</a></li>
               </ul>
             </div>
             <div class="toc-study-cat">
-              <div class="toc-study-cat-title" data-key="b1b2-cat-grammatica"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Grammatica</span></div>
+              <div class="toc-study-cat-title" data-key="b1b2-cat-grammatica"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Grammar</span></div>
               <ul class="toc-study-list">
-                <li class="toc-study-item" data-key="b1b2-grammatica-vandale"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1VgUZ0EeYVKg8nL9YSm2MNjFte9LQtc1I/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Van Dale Grammatica</a></li>
-                <li class="toc-study-item" data-key="b1b2-grammatica-vlekkeloos"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1g3pzDVvSVdARJTFVKUgImgrQZ8FCch2j/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Vlekkeloos Nederlands</a></li>
-                <li class="toc-study-item" data-key="b1b2-grammatica-schrijvenb2"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-pending">Schrijven op B2 Niveau <em>(link needed)</em></span></li>
-                <li class="toc-study-item" data-key="b1b2-grammatica-dictees"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-pending">Dictees <em>(link needed)</em></span></li>
+                <li class="toc-study-item" data-key="b1b2-grammatica-vandale"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1cw_7lbItLjiBaVvGcoFpH7KUPOg620KT/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Van Dale Grammatica</a></li>
+                <li class="toc-study-item" data-key="b1b2-grammatica-spelling"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/14ZiBnCheV8Xq9GOG8zhrjNBnYKrmy2g5/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Regels voor de officiële spelling</a></li>
+                <li class="toc-study-item" data-key="b1b2-grammatica-schrijvenb2"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1Af-QLX0I9dJy6V7Mns3XcfCUuzXd0kch/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Schrijven op B2 Niveau</a></li>
+                <li class="toc-study-item" data-key="b1b2-grammatica-dictees"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://onzetaal.nl/taalloket/oefenen-voor-dictees" target="_blank" rel="noopener noreferrer">Dictees</a></li>
               </ul>
             </div>
             <div class="toc-study-cat">
-              <div class="toc-study-cat-title" data-key="b1b2-cat-nieuws"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Nieuws</span></div>
+              <div class="toc-study-cat-title" data-key="b1b2-cat-podcasts"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Podcasts</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="b1b2-podcasts-bureaubuitenland"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://www.nporadio1.nl/podcasts/bureau-buitenland" target="_blank" rel="noopener noreferrer">Bureau buitenland</a></li>
+                <li class="toc-study-item" data-key="b1b2-podcasts-alledaagsevragen"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://podcastluisteren.nl/pod/Alledaagse-Vragen" target="_blank" rel="noopener noreferrer">Alledaagse vragen</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="b1b2-cat-nieuws"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">News</span></div>
               <ul class="toc-study-list">
                 <li class="toc-study-item" data-key="b1b2-nieuws-nosnieuws"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://nos.nl/" target="_blank" rel="noopener noreferrer">NOS Nieuws</a></li>
                 <li class="toc-study-item" data-key="b1b2-nieuws-nosjournaal"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://npo.nl/start/serie/nos-journaal-in-makkelijke-taal" target="_blank" rel="noopener noreferrer">NOS Journaal</a></li>
               </ul>
             </div>
             <div class="toc-study-cat">
-              <div class="toc-study-cat-title" data-key="b1b2-cat-literatuur"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Literatuur</span></div>
+              <div class="toc-study-cat-title" data-key="b1b2-cat-oefenexamens"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Practice exam</span></div>
               <ul class="toc-study-list">
-                <li class="toc-study-item" data-key="b1b2-literatuur-delijst"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-pending">De lijst – Marelle Boersma <em>(link needed)</em></span></li>
-              </ul>
-            </div>
-          </div>
-          <div>
-            <div class="toc-study-cat">
-              <div class="toc-study-cat-title" data-key="b1b2-cat-oefenexamens"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Oefenexamens</span></div>
-              <ul class="toc-study-list">
-                <li class="toc-study-item" data-key="b1b2-oefen-lezen"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-pending">Oefenexamen: lezen <em>(link needed)</em></span></li>
-                <li class="toc-study-item" data-key="b1b2-oefen-schrijven"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-pending">Oefenexamen: schrijven <em>(link needed)</em></span></li>
-                <li class="toc-study-item" data-key="b1b2-oefen-luisteren"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-pending">Oefenexamen: luisteren <em>(link needed)</em></span></li>
-                <li class="toc-study-item" data-key="b1b2-oefen-spreken"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-pending">Oefenexamen: spreken <em>(link needed)</em></span></li>
+                <li class="toc-study-item" data-key="b1b2-oefen-lezen"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://nt2-oefenomgeving.facet.onl/facet-openbaar-portaal/oefenen/examens/NT2-I/Lezen" target="_blank" rel="noopener noreferrer">Oefenexamen: lezen</a></li>
+                <li class="toc-study-item" data-key="b1b2-oefen-schrijven"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://nt2-oefenomgeving.facet.onl/facet-openbaar-portaal/oefenen/examens/NT2-II/Schrijven" target="_blank" rel="noopener noreferrer">Oefenexamen: schrijven</a></li>
+                <li class="toc-study-item" data-key="b1b2-oefen-luisteren"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://nt2-oefenomgeving.facet.onl/facet-openbaar-portaal/oefenen/examens/NT2-I/Luisteren" target="_blank" rel="noopener noreferrer">Oefenexamen: luisteren</a></li>
+                <li class="toc-study-item" data-key="b1b2-oefen-spreken"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://nt2-oefenomgeving.facet.onl/facet-openbaar-portaal/oefenen/examens/NT2-II/Spreken" target="_blank" rel="noopener noreferrer">Oefenexamen: spreken</a></li>
               </ul>
             </div>
             <div class="toc-study-cat">
-              <div class="toc-study-cat-title" data-key="b1b2-cat-podcasts"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Podcasts</span></div>
+              <div class="toc-study-cat-title" data-key="b1b2-cat-literatuur"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Literature</span></div>
               <ul class="toc-study-list">
-                <li class="toc-study-item" data-key="b1b2-podcasts-bureaubuitenland"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-pending">Bureau buitenland <em>(link needed)</em></span></li>
-                <li class="toc-study-item" data-key="b1b2-podcasts-alledaagsevragen"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://podcastluisteren.nl/pod/Alledaagse-Vragen" target="_blank" rel="noopener noreferrer">Alledaagse vragen</a></li>
+                <li class="toc-study-item" data-key="b1b2-literatuur-delijst"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1FZMnk39aoSk3-_HHcmibkYSNtl5nFDpf/view?usp=drive_link" target="_blank" rel="noopener noreferrer">De lijst – Marelle Boersma</a></li>
               </ul>
             </div>
             <div class="toc-study-cat">
               <div class="toc-study-cat-title" data-key="b1b2-cat-trivia"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Trivia</span></div>
               <ul class="toc-study-list">
-                <li class="toc-study-item" data-key="b1b2-trivia-knm"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://knmoefenen.nl/en/dashboard" target="_blank" rel="noopener noreferrer">KNM</a></li>
+                <li class="toc-study-item" data-key="b1b2-trivia-knm"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://knmoefenen.nl/nl/dashboard" target="_blank" rel="noopener noreferrer">KNM</a></li>
                 <li class="toc-study-item" data-key="b1b2-trivia-2voor12"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://npo.nl/start/serie/2-voor-12/afleveringen/seizoen-26" target="_blank" rel="noopener noreferrer">2 voor 12</a></li>
               </ul>
             </div>
@@ -3225,65 +3247,56 @@
         <div class="toc-study-grid">
           <div>
             <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="c1c2-cat-werkboeken"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Workbooks</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="c1c2-werkboeken-perfectie"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1QQkTMrPIb3kL74044TZQ0qSZVlwq0UxP/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Nederlands naar perfectie</a></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="c1c2-cat-grammatica"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Grammar</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="c1c2-grammatica-spelling"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1IkkjW4AadQIJv8YpYpUMUviLUKpUlxPQ/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Regels voor de officiële spelling</a></li>
+                <li class="toc-study-item" data-key="c1c2-grammatica-vlekkeloos"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1g3pzDVvSVdARJTFVKUgImgrQZ8FCch2j/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Vlekkeloos</a></li>
+                <li class="toc-study-item" data-key="c1c2-grammatica-dictees"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://onzetaal.nl/taalloket/oefenen-voor-dictees" target="_blank" rel="noopener noreferrer">Dictation</a></li>
+                <li class="toc-study-item" data-key="c1c2-grammatica-ans"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://e-ans.ivdnt.org/" target="_blank" rel="noopener noreferrer">ANS</a></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
               <div class="toc-study-cat-title" data-key="c1c2-cat-podcasts"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Podcasts</span></div>
               <ul class="toc-study-list">
                 <li class="toc-study-item" data-key="c1c2-podcasts-quest"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://open.spotify.com/episode/2ljZ2Fivmp2r6uRal81fYn?si=ZldFmAViQViyq9A7Rn4eVA" target="_blank" rel="noopener noreferrer">Quest</a></li>
                 <li class="toc-study-item" data-key="c1c2-podcasts-manmicrofoon"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://podcastluisteren.nl/pod/Man-met-de-microfoon" target="_blank" rel="noopener noreferrer">Man met de microfoon</a></li>
               </ul>
             </div>
+          </div>
+          <div>
             <div class="toc-study-cat">
-              <div class="toc-study-cat-title" data-key="c1c2-cat-oefenexamens"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Oefenexamens</span></div>
+              <div class="toc-study-cat-title" data-key="c1c2-cat-nieuws"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">News</span></div>
+              <ul class="toc-study-list">
+                <li class="toc-study-item" data-key="c1c2-nieuws-nosnieuws"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://nos.nl/" target="_blank" rel="noopener noreferrer">NOS Nieuws</a></li>
+                <li class="toc-study-item" data-key="c1c2-nieuws-nosjournaal"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://npo.nl/start/serie/nos-journaal-in-makkelijke-taal" target="_blank" rel="noopener noreferrer">NOS Journaal</a></li>
+                <li class="toc-study-item" data-key="c1c2-nieuws-nrc"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://nrccode.nrc.nl/bijlagen" target="_blank" rel="noopener noreferrer">NRC Bijlagen</a></li>
+              </ul>
+            </div>
+            <div class="toc-study-cat">
+              <div class="toc-study-cat-title" data-key="c1c2-cat-oefenexamens"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Practice exam</span></div>
               <ul class="toc-study-list">
                 <li class="toc-study-item" data-key="c1c2-oefen-cnavt"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://www.cnavt.org/nodes/voorbeeldexamens1/nl" target="_blank" rel="noopener noreferrer">CNaVT</a></li>
               </ul>
             </div>
             <div class="toc-study-cat">
-              <div class="toc-study-cat-title" data-key="c1c2-cat-werkboeken"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Werkboeken</span></div>
-              <ul class="toc-study-list">
-                <li class="toc-study-item" data-key="c1c2-werkboeken-perfectie"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1QQkTMrPIb3kL74044TZQ0qSZVlwq0UxP/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Nederlands naar perfectie</a></li>
-              </ul>
-            </div>
-            <div class="toc-study-cat">
-              <div class="toc-study-cat-title" data-key="c1c2-cat-wetenschappelijk"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Wetenschappelijk</span></div>
+              <div class="toc-study-cat-title" data-key="c1c2-cat-wetenschappelijk"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Science</span></div>
               <ul class="toc-study-list">
                 <li class="toc-study-item" data-key="c1c2-wet-eos"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://www.eoswetenschap.eu/artikels" target="_blank" rel="noopener noreferrer">EOS</a></li>
                 <li class="toc-study-item" data-key="c1c2-wet-studytube"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://academy.studytube.nl/discover" target="_blank" rel="noopener noreferrer">Studytube</a></li>
               </ul>
             </div>
             <div class="toc-study-cat">
-              <div class="toc-study-cat-title" data-key="c1c2-cat-nieuws"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Nieuws</span></div>
-              <ul class="toc-study-list">
-                <li class="toc-study-item" data-key="c1c2-nieuws-nrc"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://nrccode.nrc.nl/bijlagen" target="_blank" rel="noopener noreferrer">NRC Bijlagen</a></li>
-              </ul>
-            </div>
-          </div>
-          <div>
-            <div class="toc-study-cat">
-              <div class="toc-study-cat-title" data-key="c1c2-cat-grammatica"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Grammatica</span></div>
-              <ul class="toc-study-list">
-                <li class="toc-study-item" data-key="c1c2-grammatica-spelling"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1IkkjW4AadQIJv8YpYpUMUviLUKpUlxPQ/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Regels voor de officiële spelling</a></li>
-                <li class="toc-study-item" data-key="c1c2-grammatica-ans"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://e-ans.ivdnt.org/" target="_blank" rel="noopener noreferrer">ANS</a></li>
-              </ul>
-            </div>
-            <div class="toc-study-cat">
-              <div class="toc-study-cat-title" data-key="c1c2-cat-schrijven"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Schrijven</span></div>
-              <ul class="toc-study-list">
-                <li class="toc-study-item" data-key="c1c2-schrijven-genre"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1Rvj9TY3Q2gtXKJRY3PSyRR7PGjFNR5SQ/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">Genrespecifiek schrijven in de mens- en maatschappijvlakken</a></li>
-              </ul>
-            </div>
-            <div class="toc-study-cat">
-              <div class="toc-study-cat-title" data-key="c1c2-cat-series"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Series</span></div>
-              <ul class="toc-study-list">
-                <li class="toc-study-item" data-key="c1c2-series-nosnieuws"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://nos.nl/" target="_blank" rel="noopener noreferrer">NOS Nieuws</a></li>
-                <li class="toc-study-item" data-key="c1c2-series-nosjournaal"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://npo.nl/start/serie/nos-journaal-in-makkelijke-taal" target="_blank" rel="noopener noreferrer">NOS Journaal</a></li>
-              </ul>
-            </div>
-            <div class="toc-study-cat">
               <div class="toc-study-cat-title" data-key="c1c2-cat-taalkunde"><span class="toc-check" onclick="toggleStudyItem(this)"></span><span class="toc-study-cat-name">Taalkunde</span></div>
               <ul class="toc-study-list">
-                <li class="toc-study-item" data-key="c1c2-taalkunde-geschiedenis"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1-gyrh-rNhlCqkiKz6n_thXn14it1DnTp/view?usp=drive_link" target="_blank" rel="noopener noreferrer">De Geschiedenis van de Nederlandse Taal</a></li>
-                <li class="toc-study-item" data-key="c1c2-taalkunde-standaardisering"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1f7MLkSHduWF-VSrtPFKpfVht8dWFkNxu/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Standaardisering Nederlands</a></li>
                 <li class="toc-study-item" data-key="c1c2-taalkunde-kriskras"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1FsLnoZEnboXCynjWaCQ12wcH7qCdJaRr/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Kris kras door het Nederlands</a></li>
+                <li class="toc-study-item" data-key="c1c2-taalkunde-standaardisering"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1f7MLkSHduWF-VSrtPFKpfVht8dWFkNxu/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Standaardisering van het Nederlands</a></li>
+                <li class="toc-study-item" data-key="c1c2-taalkunde-genre"><span class="toc-check" onclick="toggleStudyItem(this)"></span><a href="https://drive.google.com/file/d/1Rvj9TY3Q2gtXKJRY3PSyRR7PGjFNR5SQ/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">Genrespecifiek schrijven in de mens- en maatschappijvlakken</a></li>
               </ul>
             </div>
           </div>
@@ -3893,7 +3906,13 @@
             <div class="blog-card-title">5 Common Stigmas About Learning Dutch</div>
           </div>
           <div class="blog-card-body">
-            <p class="blog-card-excerpt">Think Dutch is impossibly hard? You've probably heard these myths — let's bust them once and for all.</p>
+            <ul class="blog-card-toc">
+              <li>Dutch is too difficult</li>
+              <li>Everyone speaks English anyway</li>
+              <li>You need to live in the Netherlands to learn it</li>
+              <li>I'm too old to learn a new language</li>
+              <li>I failed at languages in school</li>
+            </ul>
             <span class="blog-read-more">Read More →</span>
           </div>
         </div>
@@ -3917,7 +3936,14 @@
             <div class="blog-card-title">How Long Does Each Level Take?</div>
           </div>
           <div class="blog-card-body">
-            <p class="blog-card-excerpt">A realistic breakdown of A1 through C1 — hours, milestones, and how to track real progress.</p>
+            <ul class="blog-card-toc">
+              <li>A1 — Absolute Beginner</li>
+              <li>A2 — Elementary</li>
+              <li>B1 — Intermediate</li>
+              <li>B2 — Upper Intermediate</li>
+              <li>C1 / C2 — Advanced &amp; Mastery</li>
+              <li>The Key Variable: Consistency</li>
+            </ul>
             <span class="blog-read-more">Read More →</span>
           </div>
         </div>
@@ -3941,7 +3967,10 @@
             <div class="blog-card-title">Do's and Don'ts When Learning Dutch</div>
           </div>
           <div class="blog-card-body">
-            <p class="blog-card-excerpt">Habits that help and habits that hurt. A practical guide to making fast progress without burning out.</p>
+            <ul class="blog-card-toc">
+              <li>Do's<span class="blog-card-toc-sub">Speak from day one.</span></li>
+              <li>Don'ts<span class="blog-card-toc-sub">Don't rely on translation.</span></li>
+            </ul>
             <span class="blog-read-more">Read More →</span>
           </div>
         </div>
@@ -3965,7 +3994,14 @@
             <div class="blog-card-title">Reasons to Learn Dutch Online</div>
           </div>
           <div class="blog-card-body">
-            <p class="blog-card-excerpt">No commute, no rigid schedule, no problem. Why online Dutch lessons are often more effective.</p>
+            <ul class="blog-card-toc">
+              <li>You Set the Schedule</li>
+              <li>One-on-One Attention</li>
+              <li>A Distraction-Free Environment</li>
+              <li>Access to Native Speakers Worldwide</li>
+              <li>Better Tools, Better Lessons</li>
+              <li>More Affordable</li>
+            </ul>
             <span class="blog-read-more">Read More →</span>
           </div>
         </div>
