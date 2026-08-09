@@ -341,7 +341,7 @@
       url('https://images.pexels.com/photos/33212476/pexels-photo-33212476.jpeg?auto=compress&w=1920');
     background-blend-mode: normal, color, normal;
     background-size: cover;
-    background-position: 15% center;
+    background-position: 3% center;
     background-repeat: no-repeat;
     animation: bgPanCourseware 26s ease-in-out infinite alternate;
   }
@@ -411,7 +411,7 @@
      `cover` sizing never changes, only the visible crop window shifts. */
   @keyframes bgPanHome       { 0% { background-position: center 0%;   } 100% { background-position: center 14%;  } }
   @keyframes bgPanAbout      { 0% { background-position: center 86%;  } 100% { background-position: center 100%; } }
-  @keyframes bgPanCourseware { 0% { background-position: 15% 42%;  } 100% { background-position: 15% 58%;  } }
+  @keyframes bgPanCourseware { 0% { background-position: 3% 42%;  } 100% { background-position: 3% 58%;  } }
   @keyframes bgPanServices   { 0% { background-position: right 42%;   } 100% { background-position: right 58%;   } }
   @keyframes bgPanSyllabus   { 0% { background-position: center 42%;  } 100% { background-position: center 58%;  } }
   @keyframes bgPanFaq        { 0% { background-position: center 0%;   } 100% { background-position: center 14%;  } }
@@ -1316,22 +1316,22 @@
   }
   .price-table {
     width: 100%; border-collapse: collapse;
-    background: #161616; border: 1px solid #2e2e2e; border-radius: 14px;
+    background: rgba(232,119,34,0.14); border: 1px solid rgba(255,175,83,0.3); border-radius: 14px;
     overflow: hidden; min-width: 760px;
     font-family: 'Barlow', sans-serif;
   }
   .price-table th {
     font-family: 'Orbitron', sans-serif;
     font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-    color: rgba(255,255,255,0.85); background: #222;
-    padding: 0.9rem 1.1rem; text-align: left; border-bottom: 1px solid #333;
+    color: rgba(255,255,255,0.85); background: rgba(232,119,34,0.24);
+    padding: 0.9rem 1.1rem; text-align: left; border-bottom: 1px solid rgba(255,175,83,0.35);
   }
   .price-table td {
     font-size: 0.88rem; color: rgba(255,255,255,0.85);
-    padding: 0.85rem 1.1rem; border-bottom: 1px solid #262626;
+    padding: 0.85rem 1.1rem; border-bottom: 1px solid rgba(255,175,83,0.16);
   }
   .price-table tr:last-child td { border-bottom: none; }
-  .price-table tbody tr:hover td { background: rgba(255,255,255,0.03); }
+  .price-table tbody tr:hover td { background: rgba(232,119,34,0.1); }
   .price-table .pt-pkg { font-weight: 600; color: #f7ecd9; white-space: nowrap; }
   .price-table .pt-price { font-family: 'Orbitron', sans-serif; font-weight: 700; color: #f7ecd9; white-space: nowrap; }
   .price-table tr.pt-featured td {
