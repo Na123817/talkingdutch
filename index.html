@@ -313,7 +313,6 @@
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     animation: bgPanHome 26s ease-in-out infinite alternate;
   }
   body:has(#about.active) {
@@ -326,7 +325,6 @@
     background-size: cover;
     background-position: center bottom;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     animation: bgPanAbout 26s ease-in-out infinite alternate;
   }
   /* About page: center headings like the homepage, keep body copy & cards left */
@@ -343,9 +341,8 @@
       url('https://images.pexels.com/photos/33212476/pexels-photo-33212476.jpeg?auto=compress&w=1920');
     background-blend-mode: normal, color, normal;
     background-size: cover;
-    background-position: 32% center;
+    background-position: 15% center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     animation: bgPanCourseware 26s ease-in-out infinite alternate;
   }
   body:has(#services.active) {
@@ -358,7 +355,6 @@
     background-size: cover;
     background-position: right center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     animation: bgPanServices 26s ease-in-out infinite alternate;
   }
   body:has(#syllabus.active) {
@@ -371,7 +367,6 @@
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     animation: bgPanSyllabus 26s ease-in-out infinite alternate;
   }
   body:has(#faq.active) {
@@ -384,7 +379,6 @@
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     animation: bgPanFaq 26s ease-in-out infinite alternate;
   }
   body:has(#blog.active) {
@@ -397,7 +391,6 @@
     background-size: cover;
     background-position: center bottom;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     animation: bgPanBlog 26s ease-in-out infinite alternate;
   }
   body:has(#contact.active) {
@@ -418,7 +411,7 @@
      `cover` sizing never changes, only the visible crop window shifts. */
   @keyframes bgPanHome       { 0% { background-position: center 0%;   } 100% { background-position: center 14%;  } }
   @keyframes bgPanAbout      { 0% { background-position: center 86%;  } 100% { background-position: center 100%; } }
-  @keyframes bgPanCourseware { 0% { background-position: 32% 42%;  } 100% { background-position: 32% 58%;  } }
+  @keyframes bgPanCourseware { 0% { background-position: 15% 42%;  } 100% { background-position: 15% 58%;  } }
   @keyframes bgPanServices   { 0% { background-position: right 42%;   } 100% { background-position: right 58%;   } }
   @keyframes bgPanSyllabus   { 0% { background-position: center 42%;  } 100% { background-position: center 58%;  } }
   @keyframes bgPanFaq        { 0% { background-position: center 0%;   } 100% { background-position: center 14%;  } }
@@ -2236,17 +2229,6 @@
     position: absolute; inset: 0;
     background: linear-gradient(rgba(8,5,2,0.35), rgba(8,5,2,0.7));
   }
-  .page-loader-title {
-    position: relative;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 700;
-    font-size: clamp(1.8rem, 6vw, 3.2rem);
-    color: #f7ecd9;
-    letter-spacing: 0.06em;
-    text-align: center;
-    padding: 0 1.5rem;
-    text-shadow: 0 2px 16px rgba(0,0,0,0.75), 0 1px 4px rgba(0,0,0,0.9);
-  }
   @media (prefers-reduced-motion: reduce) {
     .page-loader { transition: none; }
   }
@@ -2263,7 +2245,6 @@
   <div class="page-loader-bg"></div>
   <div class="page-loader-tint"></div>
   <div class="page-loader-scrim"></div>
-  <div class="page-loader-title">Talking Dutch</div>
 </div>
 
 <nav>
