@@ -299,11 +299,24 @@
     box-shadow: inset 0 0 0 1px rgba(232,119,34,0.5), 0 0 32px rgba(232,119,34,0.35);
   }
 
+  /* Dedicated fixed background layer — always exactly viewport-sized
+     (position:fixed + inset:0), so background-size percentages never get
+     computed against the page's full scroll height. This is what the old
+     body-background approach was doing wrong on tall pages. */
+  .site-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-color: #000;
+    background-repeat: no-repeat;
+    pointer-events: none;
+  }
+
   /* ── PAGES ── */
   .page { display: none; }
   .page.active { display: block; }
   /* Homepage uses a pure-black background instead of dark gray */
-  body:has(#home.active) {
+  body:has(#home.active) .site-bg {
     background-color: #000;
     background-image:
       linear-gradient(rgba(5,3,1,0.82), rgba(5,3,1,0.9)),
@@ -315,7 +328,7 @@
     background-repeat: no-repeat;
     animation: bgPanHome 26s ease-in-out infinite alternate;
   }
-  body:has(#about.active) {
+  body:has(#about.active) .site-bg {
     background-color: #000;
     background-image:
       linear-gradient(160deg, rgba(6,3,1,0.86), rgba(6,3,1,0.78)),
@@ -333,7 +346,7 @@
   #about .about-language-card, #about .about-approach-card { text-align: left; }
 
   /* Inner pages: match homepage — black bg + centered headings */
-  body:has(#courseware.active) {
+  body:has(#courseware.active) .site-bg {
     background-color: #000;
     background-image:
       linear-gradient(rgba(5,3,1,0.94), rgba(5,3,1,0.8)),
@@ -345,7 +358,7 @@
     background-repeat: no-repeat;
     animation: bgPanCourseware 26s ease-in-out infinite alternate;
   }
-  body:has(#services.active) {
+  body:has(#services.active) .site-bg {
     background-color: #000;
     background-image:
       linear-gradient(rgba(5,3,1,0.85), rgba(5,3,1,0.85)),
@@ -357,7 +370,7 @@
     background-repeat: no-repeat;
     animation: bgPanServices 26s ease-in-out infinite alternate;
   }
-  body:has(#syllabus.active) {
+  body:has(#syllabus.active) .site-bg {
     background-color: #000;
     background-image:
       linear-gradient(rgba(5,3,1,0.85), rgba(5,3,1,0.85)),
@@ -369,7 +382,7 @@
     background-repeat: no-repeat;
     animation: bgPanSyllabus 26s ease-in-out infinite alternate;
   }
-  body:has(#faq.active) {
+  body:has(#faq.active) .site-bg {
     background-color: #000;
     background-image:
       linear-gradient(200deg, rgba(5,3,1,0.88), rgba(5,3,1,0.78)),
@@ -381,7 +394,7 @@
     background-repeat: no-repeat;
     animation: bgPanFaq 26s ease-in-out infinite alternate;
   }
-  body:has(#blog.active) {
+  body:has(#blog.active) .site-bg {
     background-color: #000;
     background-image:
       linear-gradient(rgba(5,3,1,0.85), rgba(5,3,1,0.85)),
@@ -393,7 +406,7 @@
     background-repeat: no-repeat;
     animation: bgPanBlog 26s ease-in-out infinite alternate;
   }
-  body:has(#contact.active) {
+  body:has(#contact.active) .site-bg {
     background-color: #000;
     background-image:
       radial-gradient(ellipse at center, rgba(5,3,1,0.75), rgba(5,3,1,0.88)),
@@ -403,7 +416,6 @@
     background-size: contain;
     background-position: center top;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     animation: bgPanContact 26s ease-in-out infinite alternate;
   }
 
@@ -1242,9 +1254,7 @@
     body::before, body::after {
       animation: none !important;
     }
-    body:has(#home.active), body:has(#about.active), body:has(#courseware.active),
-    body:has(#services.active), body:has(#syllabus.active), body:has(#faq.active),
-    body:has(#blog.active), body:has(#contact.active) {
+    .site-bg {
       animation: none !important;
     }
   }
@@ -2235,6 +2245,7 @@
 </style>
 </head>
 <body>
+<div class="site-bg" id="siteBg"></div>
 <div class="syllabus-call-overlay" id="syllabusCallOverlay" aria-hidden="true">
   <div class="syllabus-call-room"></div>
   <div class="syllabus-call-label">Live lesson</div>
