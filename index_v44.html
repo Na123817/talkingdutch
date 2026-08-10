@@ -334,7 +334,7 @@
     background-image:
       linear-gradient(rgba(5,3,1,0.85), rgba(5,3,1,0.85)),
       linear-gradient(#e87722, #e87722),
-      url('courseware-bg-amsterdam.jpg');
+      url('https://images.pexels.com/photos/33212476/pexels-photo-33212476.jpeg?auto=compress&w=1920');
     background-blend-mode: normal, color, normal;
     background-size: cover;
     background-position: center center;
@@ -367,7 +367,7 @@
     background-image:
       linear-gradient(200deg, rgba(5,3,1,0.88), rgba(5,3,1,0.78)),
       linear-gradient(#e87722, #e87722),
-      url('faq-bg-nosun.jpg');
+      url('https://images.pexels.com/photos/1624661/pexels-photo-1624661.jpeg?auto=compress&w=1920');
     background-blend-mode: normal, color, normal;
     background-size: cover;
     background-position: center top;
@@ -378,7 +378,7 @@
     background-image:
       linear-gradient(rgba(5,3,1,0.85), rgba(5,3,1,0.85)),
       linear-gradient(#e87722, #e87722),
-      url('blog-bg-tulips.jpg');
+      url('https://images.pexels.com/photos/35053780/pexels-photo-35053780.jpeg?auto=compress&w=1920');
     background-blend-mode: normal, color, normal;
     background-size: cover;
     background-position: center bottom;
@@ -391,10 +391,9 @@
       linear-gradient(#f3b787, #f3b787),
       url('https://images.pexels.com/photos/33277083/pexels-photo-33277083.jpeg?auto=compress&w=1920');
     background-blend-mode: normal, color, normal;
-    background-size: 100% 130%;
-    background-position: center bottom;
+    background-size: 92%;
+    background-position: center top;
     background-repeat: no-repeat;
-    background-attachment: fixed;
   }
 
   #courseware .content, #faq .content,
@@ -461,16 +460,16 @@
   @media (prefers-reduced-motion: reduce) { .hero-head-img { animation: none; opacity: 0.95; filter: saturate(1.1) drop-shadow(0 0 24px rgba(232,119,34,0.4)); } }
   .core-band { position: relative; background: transparent; line-height: 0; display: flex; justify-content: center; perspective: 1100px; --cpx:0px; --cpy:0px; --crx:0deg; --cry:0deg; }
   .core-band-img {
-    display: block; width: min(54vw, 290px); height: auto; cursor: pointer;
-    -webkit-mask-image: radial-gradient(ellipse 48% 48% at 50% 50%, #000 45%, rgba(0,0,0,0.4) 75%, transparent 100%);
-            mask-image: radial-gradient(ellipse 48% 48% at 50% 50%, #000 45%, rgba(0,0,0,0.4) 75%, transparent 100%);
-    filter: hue-rotate(9.5deg) saturate(0.86) brightness(1.31) drop-shadow(0 0 55px rgba(232,119,34,0.28));
+    display: block; width: min(90%, 900px); height: auto; cursor: pointer;
+    -webkit-mask-image: radial-gradient(ellipse 72% 68% at 50% 50%, #000 50%, rgba(0,0,0,0.35) 72%, transparent 86%);
+            mask-image: radial-gradient(ellipse 72% 68% at 50% 50%, #000 50%, rgba(0,0,0,0.35) 72%, transparent 86%);
+    filter: drop-shadow(0 0 55px rgba(232,119,34,0.28)) saturate(1.1);
     transform-style: preserve-3d;
     transition: filter .35s ease;
     animation: coreFloat 8s ease-in-out infinite;
     will-change: transform, filter;
   }
-  .core-band-img:hover { filter: hue-rotate(9.5deg) saturate(1.0) brightness(1.38) drop-shadow(0 0 80px rgba(232,119,34,0.55)); }
+  .core-band-img:hover { filter: drop-shadow(0 0 80px rgba(232,119,34,0.55)) saturate(1.25) brightness(1.08); }
   @keyframes coreFloat {
     0%   { transform: translate(var(--cpx), var(--cpy)) rotateX(var(--crx)) rotateY(var(--cry)) scale(1); }
     50%  { transform: translate(var(--cpx), calc(var(--cpy) - 14px)) rotateX(var(--crx)) rotateY(var(--cry)) scale(1.015); }
@@ -520,7 +519,7 @@
 
   .hero-body { margin-top: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
   .accent-bar { width: 100%; height: 1px; background: #3a3a3a; margin-bottom: 1.2rem; border: none; }
-  .hero-body p { font-size: 1rem; line-height: 1.85; color: #f7ecd9; margin-bottom: 0.8rem; text-align: center; }
+  .hero-body p { font-size: 1rem; line-height: 1.85; color: #b5b5b5; margin-bottom: 0.8rem; text-align: left; }
 
   /* ── PAGE TITLES ── */
   .content { max-width: 900px; margin: 0 auto; padding: 5rem 2rem 6rem; }
@@ -1290,22 +1289,22 @@
   }
   .price-table {
     width: 100%; border-collapse: collapse;
-    background: rgba(232,119,34,0.14); border: 1px solid rgba(232,119,34,0.4); border-radius: 14px;
+    background: #161616; border: 1px solid #2e2e2e; border-radius: 14px;
     overflow: hidden; min-width: 760px;
     font-family: 'Barlow', sans-serif;
   }
   .price-table th {
     font-family: 'Orbitron', sans-serif;
     font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-    color: #f7ecd9; background: rgba(232,119,34,0.28);
-    padding: 0.9rem 1.1rem; text-align: left; border-bottom: 1px solid rgba(232,119,34,0.4);
+    color: rgba(255,255,255,0.85); background: #222;
+    padding: 0.9rem 1.1rem; text-align: left; border-bottom: 1px solid #333;
   }
   .price-table td {
-    font-size: 0.88rem; color: #f7ecd9;
-    padding: 0.85rem 1.1rem; border-bottom: 1px solid rgba(232,119,34,0.2);
+    font-size: 0.88rem; color: rgba(255,255,255,0.85);
+    padding: 0.85rem 1.1rem; border-bottom: 1px solid #262626;
   }
   .price-table tr:last-child td { border-bottom: none; }
-  .price-table tbody tr:hover td { background: rgba(232,119,34,0.1); }
+  .price-table tbody tr:hover td { background: rgba(255,255,255,0.03); }
   .price-table .pt-pkg { font-weight: 600; color: #f7ecd9; white-space: nowrap; }
   .price-table .pt-price { font-family: 'Orbitron', sans-serif; font-weight: 700; color: #f7ecd9; white-space: nowrap; }
   .price-table tr.pt-featured td {
@@ -1329,14 +1328,13 @@
   .pt-heading .accent { color: var(--accent); }
 
   /* ── HERO UPDATES ── */
-  .hero-tagline { font-size: 1.05rem; line-height: 1.85; color: #f7ecd9; margin-bottom: 1.4rem; text-align: center; }
+  .hero-tagline { font-size: 1.05rem; line-height: 1.85; color: #b5b5b5; margin-bottom: 1.4rem; text-align: left; }
   .hero-features {
-    list-style: none; padding: 0; margin: 0 auto 1.8rem;
-    display: flex; flex-direction: column; align-items: stretch;
-    text-align: left; width: max-content; max-width: 100%;
+    list-style: none; padding: 0; margin: 0 0 1.8rem;
+    display: block; text-align: left;
   }
   .hero-features li {
-    color: #f7ecd9; font-size: 0.95rem; line-height: 1.7;
+    color: #b5b5b5; font-size: 0.95rem; line-height: 1.7;
     padding-left: 1.4rem; position: relative; margin-bottom: 0.3rem;
   }
   .hero-features li::before {
@@ -2189,10 +2187,10 @@
   .page-loader.is-hidden { opacity: 0; pointer-events: none; }
   .page-loader-bg {
     position: absolute; inset: 0;
-    background-image: url('loader-seal.jpg');
+    background-image: url('https://images.pexels.com/photos/6356104/pexels-photo-6356104.jpeg?auto=compress&w=1920');
     background-size: cover;
     background-position: center;
-    filter: sepia(0.55) saturate(1.7) hue-rotate(-12deg) contrast(1.08) brightness(0.95);
+    filter: sepia(0.65) saturate(1.5) hue-rotate(-8deg) contrast(1.05) brightness(0.92);
   }
   .page-loader-tint {
     position: absolute; inset: 0;
@@ -2611,10 +2609,6 @@
     </div>
   </div>
 
-  <div class="core-band" style="margin-top:3rem;">
-    <img src="core-band.webp" alt="" class="core-band-img" id="coreBandImg">
-  </div>
-
   <!-- ── TESTIMONIALS SECTION ── -->
   <div class="testimonials-section">
     <div class="testimonials-inner">
@@ -2817,6 +2811,9 @@
       </div>
 </div>
 </div>
+    </div>
+    <div class="core-band" style="margin-top:3rem;">
+      <img src="core-band.webp" alt="" class="core-band-img" id="coreBandImg">
     </div>
   </div>
 </div>
