@@ -469,17 +469,17 @@
     background-image: url('home-bg-amsterdam.jpg');
     background-size: cover;
     background-position: center 30%;
-    filter: sepia(0.55) saturate(1.4) hue-rotate(-8deg) contrast(1.05) brightness(0.55);
+    filter: sepia(0.4) saturate(1.3) hue-rotate(-8deg) contrast(1.05) brightness(0.78);
   }
   .hero-bg-tint {
     position: absolute; inset: 0;
     background: #e87722;
     mix-blend-mode: color;
-    opacity: 0.5;
+    opacity: 0.35;
   }
   .hero-bg-scrim {
     position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(8,5,2,0.55), rgba(8,5,2,0.75) 60%, rgba(8,5,2,0.94) 88%, rgba(5,3,1,1) 100%);
+    background: linear-gradient(180deg, rgba(8,5,2,0.35), rgba(8,5,2,0.55) 60%, rgba(8,5,2,0.7) 88%, rgba(8,5,2,0.8) 100%);
   }
 
   /* ── HERO LAYOUT WITH PORTRAIT ── */
@@ -672,25 +672,25 @@
     display: flex; flex-direction: column; justify-content: flex-start;
   }
   .flip-card-front {
-    background: linear-gradient(160deg, rgba(222,125,52,0.55), rgba(181,98,31,0.55), rgba(138,71,21,0.55));
+    background: linear-gradient(160deg, rgba(222,125,52,0.3), rgba(181,98,31,0.3), rgba(138,71,21,0.3));
     border: 1px solid rgba(255,255,255,0.1);
   }
   .flip-card-back {
     transform: rotateY(180deg);
-    background: rgba(42,22,8,0.55);
+    background: rgba(42,22,8,0.32);
     border: 1px solid var(--accent);
   }
 
   /* Front colour variants — orange */
   .flip-card.featured .flip-card-front,
   .flip-card.orange   .flip-card-front,
-  .flip-card.blue     .flip-card-front { background: linear-gradient(160deg, rgba(222,125,52,0.55), rgba(181,98,31,0.55), rgba(138,71,21,0.55)); border-color: rgba(255,255,255,0.1); }
+  .flip-card.blue     .flip-card-front { background: linear-gradient(160deg, rgba(222,125,52,0.3), rgba(181,98,31,0.3), rgba(138,71,21,0.3)); border-color: rgba(255,255,255,0.1); }
 
   /* Back colour variants — black */
-  .flip-card.featured .flip-card-back { background: rgba(42,22,8,0.55); border: 1px solid var(--accent); }
-  .flip-card.orange   .flip-card-back { background: rgba(42,22,8,0.55); border: 1px solid var(--accent); }
-  .flip-card.blue     .flip-card-back { background: rgba(42,22,8,0.55); border: 1px solid var(--accent); }
-  .flip-card.default  .flip-card-back { background: rgba(42,22,8,0.55); border: 1px solid var(--accent); }
+  .flip-card.featured .flip-card-back { background: rgba(42,22,8,0.32); border: 1px solid var(--accent); }
+  .flip-card.orange   .flip-card-back { background: rgba(42,22,8,0.32); border: 1px solid var(--accent); }
+  .flip-card.blue     .flip-card-back { background: rgba(42,22,8,0.32); border: 1px solid var(--accent); }
+  .flip-card.default  .flip-card-back { background: rgba(42,22,8,0.32); border: 1px solid var(--accent); }
 
   /* Content inside cards */
   .fc-check {
@@ -734,13 +734,13 @@
 
   /* Exam card — orange front & back */
   .flip-card.exam .flip-card-front {
-    background: linear-gradient(160deg, rgba(222,125,52,0.55), rgba(181,98,31,0.55), rgba(138,71,21,0.55));
+    background: linear-gradient(160deg, rgba(222,125,52,0.3), rgba(181,98,31,0.3), rgba(138,71,21,0.3));
     border: 1px solid rgba(255,255,255,0.1);
   }
   .flip-card.exam .fc-title { color: #f7ecd9; }
   .flip-card.exam .fc-sub   { color: rgba(255,255,255,0.85); }
   .flip-card.exam .fc-hint  { color: #f7ecd9; }
-  .flip-card.exam .flip-card-back { background: rgba(42,22,8,0.55); border: 1px solid var(--accent); }
+  .flip-card.exam .flip-card-back { background: rgba(42,22,8,0.32); border: 1px solid var(--accent); }
   .flip-card.exam .fc-back-title  { color: #f7ecd9; }
   .flip-card.exam .fc-back-list   { color: rgba(255,255,255,0.85); }
   .fc-hint {
@@ -777,7 +777,7 @@
     position: absolute;
     inset: 0;
     transform: rotateY(180deg);
-    background: rgba(42,22,8,0.55);
+    background: rgba(42,22,8,0.32);
     border: 1px solid var(--accent);
     overflow-y: auto;
     display: flex;
@@ -811,14 +811,14 @@
     content: '';
     position: absolute;
     inset: -8px;
-    background: rgba(42,22,8,0.55);
+    background: rgba(42,22,8,0.32);
     border-radius: 20px;
     z-index: -1;
   }
   .price-card:hover .gflip-inner,
   .price-card:focus-within .gflip-inner { transform: rotateY(180deg); }
   .price-card .gflip-front {
-    background: linear-gradient(160deg, rgba(222,125,52,0.55), rgba(181,98,31,0.55), rgba(138,71,21,0.55));
+    background: linear-gradient(160deg, rgba(222,125,52,0.3), rgba(181,98,31,0.3), rgba(138,71,21,0.3));
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 16px;
     padding: 2.4rem 1.8rem;
@@ -929,7 +929,7 @@
   .cw-card:hover .gflip-inner,
   .cw-card:focus-within .gflip-inner { transform: rotateY(180deg); }
   .cw-card .gflip-front {
-    background: linear-gradient(160deg, rgba(222,125,52,0.55), rgba(181,98,31,0.55), rgba(138,71,21,0.55)); border: 1px solid rgba(255,255,255,0.1);
+    background: linear-gradient(160deg, rgba(222,125,52,0.3), rgba(181,98,31,0.3), rgba(138,71,21,0.3)); border: 1px solid rgba(255,255,255,0.1);
     border-radius: 12px; padding: 1.6rem 1.4rem;
   }
   .cw-card .gflip-back { border-radius: 12px; padding: 1.6rem 1.4rem; }
@@ -1471,7 +1471,7 @@
   .hs-card:hover .gflip-inner,
   .hs-card:focus-within .gflip-inner { transform: rotateY(180deg); }
   .hs-card .gflip-front {
-    background: linear-gradient(160deg, rgba(222,125,52,0.55), rgba(181,98,31,0.55), rgba(138,71,21,0.55));
+    background: linear-gradient(160deg, rgba(222,125,52,0.3), rgba(181,98,31,0.3), rgba(138,71,21,0.3));
     border: 1px solid rgba(255,255,255,0.1);
     border-top: 2px solid rgba(255,255,255,0.25);
     border-radius: 14px;
@@ -1521,7 +1521,7 @@
   .about-language-card:hover .gflip-inner,
   .about-language-card:focus-within .gflip-inner { transform: rotateY(180deg); }
   .about-language-card .gflip-front {
-    background: linear-gradient(160deg, rgba(222,125,52,0.55), rgba(181,98,31,0.55), rgba(138,71,21,0.55));
+    background: linear-gradient(160deg, rgba(222,125,52,0.3), rgba(181,98,31,0.3), rgba(138,71,21,0.3));
     border: 1px solid rgba(255,255,255,0.1);
     border-top: 2px solid rgba(255,255,255,0.25);
     border-radius: 14px;
@@ -1558,7 +1558,7 @@
   .about-approach-card:hover .gflip-inner,
   .about-approach-card:focus-within .gflip-inner { transform: rotateY(180deg); }
   .about-approach-card .gflip-front {
-    background: linear-gradient(160deg, rgba(222,125,52,0.55), rgba(181,98,31,0.55), rgba(138,71,21,0.55));
+    background: linear-gradient(160deg, rgba(222,125,52,0.3), rgba(181,98,31,0.3), rgba(138,71,21,0.3));
     border: 1px solid rgba(255,255,255,0.1);
     border-top: 2px solid rgba(255,255,255,0.25);
     border-radius: 14px;
@@ -1723,7 +1723,7 @@
   .blog-card:hover .gflip-inner,
   .blog-card:focus-within .gflip-inner { transform: rotateY(180deg); }
   .blog-card .gflip-front {
-    background: linear-gradient(160deg, rgba(222,125,52,0.55), rgba(181,98,31,0.55), rgba(138,71,21,0.55));
+    background: linear-gradient(160deg, rgba(222,125,52,0.3), rgba(181,98,31,0.3), rgba(138,71,21,0.3));
     border: 1px solid rgba(255,255,255,0.1);
     border-top: 2px solid rgba(255,255,255,0.25);
     border-radius: 16px; overflow: hidden;
@@ -1835,7 +1835,7 @@
   .testimonial-card:hover .gflip-inner,
   .testimonial-card:focus-within .gflip-inner { transform: rotateY(180deg); }
   .testimonial-card .gflip-front {
-    background: linear-gradient(160deg, rgba(222,125,52,0.55), rgba(181,98,31,0.55), rgba(138,71,21,0.55));
+    background: linear-gradient(160deg, rgba(222,125,52,0.3), rgba(181,98,31,0.3), rgba(138,71,21,0.3));
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 16px; padding: 1.8rem;
     display: flex; flex-direction: column; gap: 1rem;
@@ -3563,6 +3563,9 @@
 <div class="page" id="faq">
   <div class="content">
     <div class="page-title" id="faqTitle"></div>
+    <div class="core-band">
+      <img id="coreBandImg" class="core-band-img" src="faq-portal.png" alt="" loading="lazy">
+    </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">Do I need any prior knowledge of Dutch? <span class="arrow">▼</span></div>
       <div class="faq-a">Not at all! Courses start from absolute zero (A0). Whether you have never heard Dutch before or want to sharpen existing skills, there is a place for you.</div>
