@@ -10,12 +10,8 @@
 <meta name="author" content="Jonathan van Hassel">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.talkingdutch.com/">
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="shortcut icon" href="favicon.ico">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.svg">
 
 <!-- ✦ OPEN GRAPH (Facebook, LinkedIn, WhatsApp) -->
 <meta property="og:type" content="website">
@@ -42,7 +38,7 @@
   "@type": "ProfessionalService",
   "name": "Talking Dutch",
   "url": "https://www.talkingdutch.com",
-  "logo": "https://www.talkingdutch.com/logo-final-512.png",
+  "logo": "https://www.talkingdutch.com/images/logo.png",
   "image": "https://www.talkingdutch.com/og-image.jpg",
   "description": "Online Dutch language lessons with Jonathan van Hassel, a native Dutch tutor. Personalised 1-on-1 sessions for all levels from A1 to C1, including NT2 exam preparation and civic integration (inburgering) courses.",
   "priceRange": "$$",
@@ -231,7 +227,13 @@
     gap: 0.55rem;
     padding: 0.55rem max(1rem, calc((100% - 1200px) / 2));
     position: relative;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x proximity;
   }
+  nav::-webkit-scrollbar { display: none; }
   nav > * { flex: 0 0 auto; }
   nav {
     -webkit-overflow-scrolling: touch;
@@ -246,42 +248,6 @@
     background: transparent;
     pointer-events: none;
   }
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    line-height: 0;
-    padding: 0.3rem;
-    border-radius: 9px;
-    transition: box-shadow .2s;
-  }
-  .nav-logo:focus-visible {
-    outline: 2px solid rgba(232,119,34,0.8);
-    outline-offset: 1px;
-  }
-  .nav-logo img {
-    height: 34px;
-    width: 34px;
-    display: block;
-    border-radius: 8px;
-  }
-  .nav-links {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: center;
-    gap: 0.55rem;
-    flex: 1 1 auto;
-    min-width: 0;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    scroll-snap-type: x proximity;
-    -webkit-overflow-scrolling: touch;
-  }
-  .nav-links::-webkit-scrollbar { display: none; }
-  .nav-links > * { flex: 0 0 auto; }
   nav a {
     display: inline-block;
     padding: 0.72rem 1.1rem;
@@ -524,7 +490,7 @@
     transition: transform 0.35s ease, filter 0.35s ease;
   }
   .hero-head:hover { transform: scale(1.05); filter: drop-shadow(0 0 38px rgba(232,119,34,0.7)); }
-  .hero-head-bottom { width: min(40vw, 210px); margin: 1rem auto 4rem; }
+  .hero-head-bottom { width: min(32vw, 175px); margin: 1rem auto 2.5rem; }
   .hero-head:focus-visible { outline: 2px solid var(--accent); outline-offset: 14px; border-radius: 12px; }
   .hero-head-img {
     width: 100%; display: block;
@@ -1003,14 +969,14 @@
     width: 36px;
     height: 36px;
     border-radius: 10px;
-    background: var(--accent);
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #150c05;
     flex-shrink: 0;
   }
   .footer-brand-icon svg { width: 20px; height: 20px; fill: currentColor; }
+  .footer-brand-icon img { width: 100%; height: 100%; display: block; object-fit: cover; }
   .footer-brand-name {
     font-family: 'Orbitron', sans-serif;
     font-size: 1.05rem;
@@ -1337,7 +1303,6 @@
   }
   @media(max-width:700px) {
     nav { justify-content: flex-start; }
-    .nav-links { justify-content: flex-start; }
     nav a.nav-contact {
       position: static;
       top: auto;
@@ -1351,7 +1316,7 @@
       letter-spacing: 0.12em;
       border-radius: 7px;
     }
-    .hero { padding: 3.5rem 5vw 3rem; }
+    .hero { min-height: auto; padding: 2rem 5vw 2rem; }
     table { font-size: .78rem; }
     th, td { padding: .65rem .5rem; }
     .pricing-grid { grid-template-columns: 1fr; }
@@ -1369,8 +1334,6 @@
   }
   @media(max-width:480px) {
     nav { gap: 0.35rem; padding: 0.5rem 0.6rem; }
-    .nav-links { gap: 0.35rem; }
-    .nav-logo img { height: 28px; width: 28px; }
     nav a {
       padding: 0.6rem 0.55rem;
       font-size: 0.46rem;
@@ -2394,19 +2357,14 @@
 </div>
 
 <nav>
-  <a href="javascript:void(0)" onclick="show('home')" class="nav-logo" aria-label="Talking Dutch — Home">
-    <img src="logo-final-512.png" alt="Talking Dutch" width="34" height="34">
-  </a>
-  <div class="nav-links">
-    <a href="javascript:void(0)" onclick="show('home')" class="active" id="tab-home">Home</a>
-    <a href="javascript:void(0)" onclick="show('about')" id="tab-about">About</a>
-    <a href="javascript:void(0)" onclick="show('courseware')" id="tab-courseware">Courseware</a>
-    <a href="javascript:void(0)" onclick="show('services')" id="tab-services">Packages</a>
-    <a href="javascript:void(0)" onclick="show('syllabus')" id="tab-syllabus">Syllabus</a>
-    <a href="javascript:void(0)" onclick="show('faq')" id="tab-faq">FAQ</a>
-    <a href="javascript:void(0)" onclick="show('blog')" id="tab-blog">Blog</a>
-    <a href="javascript:void(0)" onclick="show('contact')" id="tab-contact" class="nav-contact">Contact</a>
-  </div>
+  <a href="javascript:void(0)" onclick="show('home')" class="active" id="tab-home">Home</a>
+  <a href="javascript:void(0)" onclick="show('about')" id="tab-about">About</a>
+  <a href="javascript:void(0)" onclick="show('courseware')" id="tab-courseware">Courseware</a>
+  <a href="javascript:void(0)" onclick="show('services')" id="tab-services">Packages</a>
+  <a href="javascript:void(0)" onclick="show('syllabus')" id="tab-syllabus">Syllabus</a>
+  <a href="javascript:void(0)" onclick="show('faq')" id="tab-faq">FAQ</a>
+  <a href="javascript:void(0)" onclick="show('blog')" id="tab-blog">Blog</a>
+  <a href="javascript:void(0)" onclick="show('contact')" id="tab-contact" class="nav-contact">Contact</a>
 </nav>
 
 <!-- ══════════ HOME ══════════ -->
@@ -3718,8 +3676,8 @@
     pricing:    { id: 'pricingTitle',    white: 'Choose Your ',    orange: 'Plan'       },
     syllabus:   { id: 'syllabusTitle',   white: 'Study ',          orange: 'Program'    },
     faq:        { id: 'faqTitle',        white: 'Frequently Asked ', orange: 'Questions' },
-    blog:       { id: 'blogTitle',       white: 'Dutch Learning Blog',   orange: ''     },
-    about:      { id: 'aboutTitle',      white: 'About Talking Dutch',  orange: ''           },
+    blog:       { id: 'blogTitle',       white: 'Dutch Learning ',      orange: 'Blog'       },
+    about:      { id: 'aboutTitle',      white: 'About Talking ',       orange: 'Dutch'      },
     contact:    { id: 'contactTitle',    white: 'Contact ',        orange: 'Jonathan'   },
   };
 
@@ -3945,6 +3903,7 @@
       const cfg = PAGE_TITLES[key];
       if (cfg) typeTitle(cfg, i * 300);
     });
+    if (id === 'home') startHeroTyping();
 
     if (id === 'faq') resetFaqState();
     if (id === 'syllabus') resetSyllabusState();
@@ -3964,27 +3923,37 @@
   const LINE2 = 'Talking Dutch';
   const titleEl   = document.getElementById('heroTitle');
   const subTextEl = document.getElementById('heroSubText');
-  let i = 0, j = 0, phase = 1;
+  let heroGen = 0;
 
-  function step() {
-    if (phase === 1) {
-      titleEl.textContent = LINE1.slice(0, i);
-      i++;
-      if (i > LINE1.length) { phase = 2; setTimeout(step, 350); return; }
-      setTimeout(step, i === 1 ? 500 : 48);
-    } else if (phase === 2) {
-      subTextEl.textContent = LINE2.slice(0, j);
-      j++;
-      if (j > LINE2.length) { phase = 3; setTimeout(step, 3000); return; }
-      setTimeout(step, j === 1 ? 200 : 65);
-    } else if (phase === 3) {
-      j--;
-      subTextEl.textContent = LINE2.slice(0, j);
-      if (j <= 0) { phase = 2; setTimeout(step, 600); return; }
-      setTimeout(step, 42);
+  function startHeroTyping() {
+    if (!titleEl || !subTextEl) return;
+    const gen = ++heroGen;
+    let i = 0, j = 0, phase = 1;
+    titleEl.textContent = '';
+    subTextEl.textContent = '';
+
+    function step() {
+      if (gen !== heroGen) return; // superseded by a newer run — stop
+      if (phase === 1) {
+        titleEl.textContent = LINE1.slice(0, i);
+        i++;
+        if (i > LINE1.length) { phase = 2; setTimeout(step, 350); return; }
+        setTimeout(step, i === 1 ? 500 : 48);
+      } else if (phase === 2) {
+        subTextEl.textContent = LINE2.slice(0, j);
+        j++;
+        if (j > LINE2.length) { phase = 3; setTimeout(step, 3000); return; }
+        setTimeout(step, j === 1 ? 200 : 65);
+      } else if (phase === 3) {
+        j--;
+        subTextEl.textContent = LINE2.slice(0, j);
+        if (j <= 0) { phase = 2; setTimeout(step, 600); return; }
+        setTimeout(step, 42);
+      }
     }
+    setTimeout(step, 700);
   }
-  setTimeout(step, 700);
+  startHeroTyping();
 
   // ── BLOG ──
   function openArticle(id) {
@@ -4681,7 +4650,7 @@
     <div class="footer-brand">
       <div class="footer-brand-top">
         <div class="footer-brand-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 2 7l10 5 8-4v6h2V7L12 2Zm-6 9.18V16c0 2.21 2.69 4 6 4s6-1.79 6-4v-4.82l-6 3-6-3Z"/></svg>
+          <img src="favicon.svg" alt="Talking Dutch logo" loading="lazy">
         </div>
         <div class="footer-brand-name">Talking Dutch</div>
       </div>
